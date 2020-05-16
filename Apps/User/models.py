@@ -6,10 +6,10 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     # telefono = models.CharField(max_length= 13, unique=True, null=False, blank=False)
     creditos = models.PositiveIntegerField(default=0, null=False, blank=0)
-    nivel = models.ForeignKey('Niveles', on_delete=models.CASCADE)
+    nivel = models.ForeignKey('Nivel', on_delete=models.CASCADE)
     is_cafeteria = models.BooleanField(default=False, null=False, blank=False)
 
-class Niveles(models.Model):
+class Nivel(models.Model):
     ESTADOS = [
         ('P', 'EN PROGRESO'),
         ('C', 'COBRADO'),

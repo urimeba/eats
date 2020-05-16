@@ -1,0 +1,32 @@
+INSTRUCCIONES GENERALES DE ACTIVIDADES PARA EL PROYECTO
+
+Cosas que debes tener instaladas
+*Python 3
+*XAAMP
+*django (libreria de python. La instalas con el comando "pip install django" despues de instalar Python)
+*mysqlclient (libreria de python. La instalas con el comando "pip install mysqlclient" despues de instalar Python)
+*Crear una base de datos en PHPMYADMIN llamada "eats"
+
+
+Como correr el servidor
+*Abre XAAMP y verifica que los servicios de "MySQLDatabase" y "Apache Web Server" esten activos y en 
+color verde. Si no estan en verde, activalos con el boton "Iniciar" o "Start".
+*Metete a esta misma carpeta donde se encuentra este archivo de texto desde CMD
+*Ingresa el comando "dir" y deberas ver un archivo que se llama "manage.py". Si no lo ves, estas
+en la carpeta incorrecta
+*Si ya viste el archivo "manage.py", ingresa el comando "python manage.py runserver".
+*En tu CMD podras ver una direccion: http://127.0.0.1:8000/ Ahi esta corriendo tu servidor
+*Ingresa a esa URL y listo
+
+Como ver los cambios hechos en la base de datos
+*Deberas tener cerrado tu servidor de Django.
+*Abre XAAMP y verifica que los servicios de "MySQLDatabase" y "Apache Web Server" esten activos y en 
+color verde. Si no estan en verde, activalos con el boton "Iniciar" o "Start".
+*Metete a esta misma carpeta donde se encuentra este archivo de texto desde CMD
+*Ingresa el comando "dir" y deberas ver un archivo que se llama "manage.py". Si no lo ves, estas
+en la carpeta incorrecta
+*Si ya viste el archivo "manage.py", ingresa el comando "python manage.py makemigrations".
+Deberas ver una lista de cambios hechos en la base de datos. Si ves un mensaje diciendo que "no se han 
+encontrado cambios", algo salio mal.
+*Si ya viste la lista de cambios, ahora ingresa el comando "python manage.py migrate"
+*Listo

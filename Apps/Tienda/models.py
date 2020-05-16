@@ -16,8 +16,8 @@ class Producto(models.Model):
         ('VI', 'VIERNES'),
     ]
 
-    nombre = models.CharField(max_length=30, null=False, blank=False, unique=True)
     descripcion = models.CharField(max_length=50, null=False, blank=False)
+    nombre = models.CharField(max_length=30, null=False, blank=False, unique=True)
     costo = models.DecimalField(max_digits=4, decimal_places=2, null=False, blank=False)
     unidades = models.PositiveIntegerField()
     is_preparado = models.BooleanField()
