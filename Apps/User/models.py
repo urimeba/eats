@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class User(AbstractUser):
+    email = models.EmailField(unique=True, null=True, blank=False,verbose_name='correo electronico', max_length=255)
     creditos = models.PositiveIntegerField(default=0, null=False, blank=0)
     is_cafeteria = models.BooleanField(default=False, null=False, blank=False)
 
