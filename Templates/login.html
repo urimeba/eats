@@ -6,8 +6,43 @@
     <title>Login</title>
 </head>
 <body>
+    <!-- MENSAJE DE EXITO CUANDO EL REGISTRO DEL USUARIO ES EXITOSO -->
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
-    {{form.as_p}}
+    <!-- FORMULARIO PARA INICIO DE SESION -->
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <!-- SI NO SE INGRESA CORRECTAMENTE EL USUARIO O CONTRASEÑA -->
+        {% if form.errors %}
+            <p>Tu usuario y contraseña no coinciden. Intenta nuevamente</p>
+        {% endif %}
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+            </table>
+        <input type="submit" name="Iniciar sesion" id="btn-iniciar" value="Iniciar sesión">
+    </form>
+
+    <!-- BOTON QUE ENVIA A LA PAGINA DE REGISTRO -->
+    <a href="{% url 'signup' %}">
+        <button>Todavia no tengo cuenta</button>
+    </a>
+
+    
     
 </body>
 </html>

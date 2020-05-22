@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+
+    <p>Todos los datos son requeridos</p>
+
+    <!-- FORMULARIO PARA EL REGISTRO DE UN USUARIO -->
+    <form action="{% url 'signup' %}" method="POST">
+        {% csrf_token %}
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                <!-- DESPLIEGUE DE ERRORES EN EL REGISTRO, COMO USERNAME DUPLICADO O CORREO DUPLICADO -->
+                    <div class="alert alert-danger">
+                        <strong style="color: red">{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong style="color: red">{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <table>
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.first_name.label_tag }}</td>
+                <td>{{ form.first_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.last_name.label_tag }}</td>
+                <td>{{ form.last_name }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.email.label_tag }}</td>
+                <td>{{ form.email }}</td>
+                <td>
+                    <small style="color: grey">{{ form.email.help_text }}</small>
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.password1.label_tag }}</td>
+                <td>{{ form.password1 }}</td>
+                
+            </tr>
+            <tr>
+                <td>{{ form.password2.label_tag }}</td>
+                <td>{{ form.password2 }}</td>
+            </tr>
+        </table>
+        <input type="submit" name="signup" id="btn-registro" value="Registrame">
+    </form>
+
+    <!-- BOTON QUE ENVIA A LA PAGINA DE LOGIN -->
+    <a href="{% url 'login' %}">
+        <button>Ya tengo cuenta</button>
+    </a>
+    
+</body>
+</html>
