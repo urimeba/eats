@@ -1,12 +1,18 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth.models import AbstractUser
+import random
+
+def random_string():
+    return random.randrange(100000, 999999)
 
 # Create your models here.
 class User(AbstractUser):
+    is_active = models.BooleanField(null=False, blank=False, default=False)
     email = models.EmailField(unique=True, null=True, blank=False,verbose_name='correo electronico', max_length=255)
     creditos = models.PositiveIntegerField(default=0, null=False, blank=0)
     is_cafeteria = models.BooleanField(default=False, null=False, blank=False)
+    verification_code = models.PositiveIntegerField(default=random_string)
 
 class Progreso(models.Model):
     ESTADOS = [
