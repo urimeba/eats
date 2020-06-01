@@ -1,17 +1,18 @@
 from django import forms
 from .models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from twilio.rest import Client
 from django.contrib.auth import authenticate, login
+from twilio.rest import Client
+import random
 
-
+def random_string():
+    return random.randrange(100000, 999999)
 
 class LoginForm(AuthenticationForm):
 
     error_messages = {
         'invalid_login': (
-            "Please enter a correct %(username)s and password. Note that both "
-            "fields may be case-sensitive."
+            "Por favor introduzca nombre de usuario y contraseña correctos. Note que puede que ambos campos sean estrictos en relación a diferencias entre mayúsculas y minúsculas."
         ),
         'inactive': ("Tu cuenta no ha sido verificada. Verificala para poder ingresar"),
     }
@@ -52,8 +53,6 @@ class LoginForm(AuthenticationForm):
 
         return self.cleaned_data
 
-        
-
 class SignupForm(UserCreationForm):
     username = forms.CharField(
         required=True,
@@ -84,27 +83,34 @@ class SignupForm(UserCreationForm):
             'password2',
             ]
 
-    # Validating the username is a valid telephonic number
+    codigo = random_string()
+
     def clean_username(self):
         data = self.cleaned_data['username']
-
         try:
             # Twilio data
             account_sid = 'AC5770f9d44bc5f3ad36f3839537c832db'
-            auth_token = '02b15c643a11ed86832f973ab5780e1d'
+            auth_token = 'ae4a5538feea4182d658229dbdcfaf17'
             client = Client(account_sid, auth_token)
 
-            # Sending SMS to user, so can activate his account
+            # Sending SMS to user, so he can activate his account
             message = client.messages.create(
-                body="Tu codigo de Eats es: 123456",
+                body="Tu codigo de Eats es: {0}".format(self.codigo),
                 from_='+12407861324',
                 to='+52'+data
                 )
+
+            return data
         except Exception as error:
-            print("SMS Twilio error: {0}".format(error))
-            raise forms.ValidationError('Ingresa un número telefónico válido')
-        
-        return data
+            print(error)
+            raise forms.ValidationError('Ingresa un teléfono válido')
+
+    def save(self, commit=True):
+        user = super(SignupForm, self).save(commit=False)
+        user.verification_code = self.codigo
+        if commit:
+            user.save()
+        return user
 
 class VerificationForm(forms.Form):
     username = forms.CharField(

@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.urls import reverse
 from .models import User
-from django import forms
 
 class CustomLogin(LoginView):
     template_name = 'login.html'
@@ -19,7 +18,7 @@ class CustomSignup(CreateView):
     template_name = 'signup.html'
 
     def get_success_url(self):
-        messages.add_message(self.request, messages.SUCCESS, 'Usuario registrado correctamente')
+        messages.SUCCESS(self.request, 'Usuario registrado correctamente')
         return reverse('login')
 
 class CustomLogout(LogoutView):
@@ -31,7 +30,7 @@ class CustomVerification(FormView):
     success_url = reverse_lazy('login')
 
     def get_success_url(self):
-        messages.add_message(self.request, messages.SUCCESS, 'Cuenta verifica correctamente. Ya puedes iniciar sesión')
+        messages.success(self.request, 'Cuenta verifica correctamente. Ya puedes iniciar sesión')
         return reverse('login')
 
 
