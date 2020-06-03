@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link href="./assets/css/font-awesome.css" rel="stylesheet" />
+    <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="/assets/css/argon-design-system.css" rel="stylesheet" />
 </head>
+
 <body>
+    <h1>Login</h1>
     <!-- MENSAJE DE EXITO CUANDO EL REGISTRO DEL USUARIO ES EXITOSO -->
     {% if messages %}
     <ul class="messages">
@@ -30,12 +44,18 @@
         <button>Todavia no tengo cuenta</button>
     </a>
 
-    
+
     <a href="{% url 'verification' %}">
         <button>Ya cuento con mi codigo de verificación</button>
     </a>
 
-    
-    
+    <!--   Core JS Files   -->
+    <script src="/assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Template Scripts -->
+    <script src="/assets/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
 </body>
+
 </html>
