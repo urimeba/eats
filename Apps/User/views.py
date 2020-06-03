@@ -18,7 +18,7 @@ class CustomSignup(CreateView):
     template_name = 'signup.html'
 
     def get_success_url(self):
-        messages.SUCCESS(self.request, 'Usuario registrado correctamente')
+        messages.add_message(self.request, messages.SUCCESS, 'Usuario registrado correctamente')
         return reverse('login')
 
 class CustomLogout(LogoutView):

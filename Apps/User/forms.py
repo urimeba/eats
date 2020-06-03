@@ -90,7 +90,7 @@ class SignupForm(UserCreationForm):
         try:
             # Twilio data
             account_sid = 'AC5770f9d44bc5f3ad36f3839537c832db'
-            auth_token = 'ae4a5538feea4182d658229dbdcfaf17'
+            auth_token = 'e5696807063c55b9f847f1c107442b5f'
             client = Client(account_sid, auth_token)
 
             # Sending SMS to user, so he can activate his account
