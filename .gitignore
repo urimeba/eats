@@ -6,6 +6,9 @@ Pipfile.lock
 Apps/Tienda/migrations/
 
 Apps/User/migrations/
+Templates/examples/
+Templates/assets/scss/bootstrap/
+Templates/assets/scss/theme/
 
 
 
