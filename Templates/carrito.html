@@ -24,15 +24,19 @@
             th1.appendChild(document.createTextNode("Nombre"));
             let th2 = document.createElement("th");
             th2.appendChild(document.createTextNode("Precio p/unidad"));
+            let th4 = document.createElement("th");
+            th4.appendChild(document.createTextNode("Unidades"));
             let th3 = document.createElement("th");
             th3.appendChild(document.createTextNode("Total"));
             tr1.appendChild(th1);
             tr1.appendChild(th2);
+            tr1.appendChild(th4);
             tr1.appendChild(th3);
 
             table.appendChild(tr1);
             
             let keys = Object.keys(pedidos);
+            let total = 0;
             for(let x=0; x<Object.keys(pedidos).length; x++){
                 let key = keys[x];
                 console.log(key, ":",  pedidos[key]);
@@ -42,18 +46,24 @@
                 td1.appendChild(document.createTextNode(pedidos[key]['nombre']));
 
                 let td2 = document.createElement("td");
-                td2.appendChild(document.createTextNode(pedidos[key]['precio']));
+                td2.appendChild(document.createTextNode(pedidos[key]['precio'].toFixed(2)));
+
+                let td4 = document.createElement("td");
+                td4.appendChild(document.createTextNode(pedidos[key]['unidades']));
 
                 let td3 = document.createElement("td");
-                td3.appendChild(document.createTextNode(pedidos[key]['total']));
+                td3.appendChild(document.createTextNode(pedidos[key]['total'].toFixed(2)));
+                total += parseFloat(pedidos[key]['total']);
 
                 tr.appendChild(td1);
                 tr.appendChild(td2);
+                tr.appendChild(td4);
                 tr.appendChild(td3);
                 table.appendChild(tr);
             }
 
             divPedidos.appendChild(table);
+            divPedidos.appendChild(document.createTextNode("Total: " + total.toFixed(2)));
 
 
         }
