@@ -49,3 +49,7 @@ agregarCarrito = (id, nombre, precio, unidades) =>{
 
     localStorage.setItem("pedidos", JSON.stringify(pedidos))
 }
+
+comprar = () =>{
+    alert('Todavia no tengo funcionalidad');
+}
