@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
@@ -9,53 +10,278 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- Nucleo Icons -->
-    <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="{% static '/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+    <link href="{% static '/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
-    <link href="./assets/css/font-awesome.css" rel="stylesheet" />
-    <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href=" {% static '/assets/css/font-awesome.css' %}  " rel="stylesheet" />
+    <link href=" {% static '/assets/css/nucleo-svg.css' %}  " rel="stylesheet" />
     <!-- CSS Files -->
-    <link href="/assets/css/argon-design-system.css" rel="stylesheet" />
+    <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
+    <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
 </head>
 
 <body>
-    <h1>Login</h1>
-    <!-- MENSAJE DE EXITO CUANDO EL REGISTRO DEL USUARIO ES EXITOSO -->
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li>
-            {{ message }}
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
 
-    <!-- FORMULARIO PARA INICIO DE SESION -->
-    <form action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
-        <!-- SI NO SE INGRESA CORRECTAMENTE EL USUARIO O CONTRASEÑA -->
-        {{ form.as_p }}
-        <input type="submit" name="Iniciar sesion" id="btn-iniciar" value="Iniciar sesión">
-    </form>
+    <!-- Navbar -->
+    <nav id="navbar-main" class="navbar position-relative navbar-main navbar-expand-lg navbar-dark bg-default headroom">
+        <div class="container">
+            <a class="navbar-brand mr-lg-5" href="index.html">
+                <img src="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="index.html">
+                                <img src="">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+                    <li class="nav-item dropdown">
+                        <a href="javascript:;" class="nav-link" data-toggle="dropdown" role="button">
+                            <i class="ni ni-ui-04 d-lg-none"></i>
+                            <span class="nav-link-inner--text">Link 1</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:;" class="nav-link" data-toggle="dropdown" role="button">
+                            <i class="ni ni-ui-04 d-lg-none"></i>
+                            <span class="nav-link-inner--text">Link 2</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="javascript:;" class="nav-link" data-toggle="dropdown" role="button">
+                            <i class="ni ni-ui-04 d-lg-none"></i>
+                            <span class="nav-link-inner--text">Link 3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
 
-    <!-- BOTON QUE ENVIA A LA PAGINA DE REGISTRO -->
-    <a href="{% url 'signup' %}">
-        <button>Todavia no tengo cuenta</button>
-    </a>
+    <div class="wrapper">
+        <div class="page-header bg-default">
+            
+          <div class="bgImgRegister page-header-image " ></div>
+          <div class="container" id="container">
+            <div class="form-container sign-up-container">
+              <form action="javascript:;">
+                <h2>Create Account</h2>
+                <div class="social-container">
+                  <button type="button" class="btn btn-facebook btn-sm">
+                    <span class="btn-inner--icon"><i class="fab fa-facebook"></i></span>
+                  </button>
+                  <button type="button" class="btn-instagram btn btn-sm">
+                    <span class="btn-inner--icon"><i class="fab fa-instagram"></i></span>
+                  </button>
+                  <button type="button" class="btn btn-twitter btn-sm">
+                    <span class="btn-inner--icon"><i class="fab fa-twitter"></i></span>
+                  </button>
+                </div>
+                <span class="text-default mb-4">or use your email for registration</span>
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Name" type="text">
+                  </div>
+                </div>
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Email" type="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Password" type="password">
+                  </div>
+                </div>
+                <button class="btn btn-primary">Sign Up</button>
+              </form>
+            </div>
+            <div class="form-container sign-in-container">
+              <form action="#" role="form">
+                <h2>Sign in</h2>
+                <div class="social-container">
+                  <button type="button" class="btn btn-facebook btn-sm">
+                    <span class="btn-inner--icon"><i class="fab fa-facebook"></i></span>
+                  </button>
+                  <button type="button" class="btn-instagram btn btn-sm">
+                    <span class="btn-inner--icon"><i class="fab fa-instagram"></i></span>
+                  </button>
+                  <button type="button" class="btn btn-twitter btn-sm">
+                    <span class="btn-inner--icon"><i class="fab fa-twitter"></i></span>
+                  </button>
+                </div>
+                <span class="text-default mb-4">or use your account</span>
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Email" type="email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" placeholder="Password" type="password">
+                  </div>
+                </div>
+                <a href="javascript:;">Forgot your password?</a>
+                <button class="btn btn-primary mt-3">Sign In</button>
+              </form>
+            </div>
+            <div class="overlay-container">
+              <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                  <h1 class="text-white">Welcome Back!</h1>
+                  <p>
+                    To keep connected with us please login with your personal info
+                  </p>
+                  <button class="btn btn-neutral btn-sm" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                  <h1 class="text-white">Hello, Friend!</h1>
+                  <p>Enter your personal details and start journey with us</p>
+                  <button class="btn btn-neutral btn-sm" id="signUp">Sign Up</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          // The SignUp/SignIn form
+    
+          const signUpButton = document.getElementById('signUp');
+          const signInButton = document.getElementById('signIn');
+          const container = document.getElementById('container');
+    
+          signUpButton.addEventListener('click', () => {
+            container.classList.add('right-panel-active');
+          });
+    
+          signInButton.addEventListener('click', () => {
+            container.classList.remove('right-panel-active');
+          });
+        </script>
+        <footer class="footer">
+          <div class="container">
+            <div class="row row-grid align-items-center mb-5">
+              <div class="col-lg-6">
+                <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
+                <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+              </div>
+              <div class="col-lg-6 text-lg-center btn-wrapper">
+                <button target="_blank" href="https://twitter.com/creativetim" rel="nofollow" class="btn btn-icon-only btn-twitter rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
+                  <span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
+                </button>
+                <button target="_blank" href="https://www.facebook.com/CreativeTim/" rel="nofollow" class="btn-icon-only rounded-circle btn btn-facebook" data-toggle="tooltip" data-original-title="Like us">
+                  <span class="btn-inner--icon"><i class="fab fa-facebook"></i></span>
+                </button>
+                <button target="_blank" href="https://dribbble.com/creativetim" rel="nofollow" class="btn btn-icon-only btn-dribbble rounded-circle" data-toggle="tooltip" data-original-title="Follow us">
+                  <span class="btn-inner--icon"><i class="fa fa-dribbble"></i></span>
+                </button>
+                <button target="_blank" href="https://github.com/creativetimofficial" rel="nofollow" class="btn btn-icon-only btn-github rounded-circle" data-toggle="tooltip" data-original-title="Star on Github">
+                  <span class="btn-inner--icon"><i class="fa fa-github"></i></span>
+                </button>
+              </div>
+            </div>
+            <hr>
+            <div class="row align-items-center justify-content-md-between">
+              <div class="col-md-6">
+                <div class="copyright">
+                  &copy; 2020 <a href="" target="_blank">Creative Tim</a>.
+                </div>
+              </div>
+              <div class="col-md-6">
+                <ul class="nav nav-footer justify-content-end">
+                  <li class="nav-item">
+                    <a href="" class="nav-link" target="_blank">Creative Tim</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="nav-link" target="_blank">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="https://www.creative-tim.com/blog" class="nav-link" target="_blank">Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="" class="nav-link" target="_blank">License</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+    <!-- login -->
+    <div class="container position-relative">
+        <h1>Login</h1>
+        <!-- MENSAJE DE EXITO CUANDO EL REGISTRO DEL USUARIO ES EXITOSO -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <!-- FORMULARIO PARA INICIO DE SESION -->
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <!-- SI NO SE INGRESA CORRECTAMENTE EL USUARIO O CONTRASEÑA -->
+            {{ form.as_p }}
+            <input class="btn btn-success" type="submit" name="Iniciar sesion" id="btn-iniciar" value="Iniciar sesión">
+        </form>
+
+        <!-- BOTON QUE ENVIA A LA PAGINA DE REGISTRO -->
+        <a href="{% url 'signup' %}">
+            <button class="btn btn-info">Todavia no tengo cuenta</button>
+        </a>
 
 
-    <a href="{% url 'verification' %}">
-        <button>Ya cuento con mi codigo de verificación</button>
-    </a>
+        <a href="{% url 'verification' %}">
+            <button class="btn btn-default">Ya cuento con mi codigo de verificación</button>
+        </a>
+    </div>
+    
+
 
     <!--   Core JS Files   -->
-    <script src="/assets/js/core/jquery.min.js" type="text/javascript"></script>
-    <script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
-    <script src="/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="{% static '/assets/js/core/jquery.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/assets/js/core/popper.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/assets/js/core/bootstrap.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/assets/js/plugins/perfect-scrollbar.jquery.min.js' %} " type="text/javascript"></script>
     <!-- Template Scripts -->
-    <script src="/assets/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
+    <script src="{% static '/assets/js/argon-design-system.js' %} " type="text/javascript"></script>
 </body>
 
 </html>
