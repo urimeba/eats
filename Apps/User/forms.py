@@ -18,15 +18,15 @@ class LoginForm(AuthenticationForm):
     }
 
     username = forms.CharField(
-        label='Numero telefónico', 
+        label='', 
         widget=forms.TextInput(attrs={
-            'class': 'aqui_pon_tus_clases',
-            'placeholder': '10 digitos, sin lada'
+            'class': 'form-control',
+            'placeholder': 'N. telefonico'
             }))
     password = forms.CharField(
-        label='Contraseña',
+        label='',
         widget=forms.PasswordInput(attrs={
-            'class': 'aqui_pon_tus_clases',
+            'class': 'form-control',
             'placeholder':'Contraseña'
             }))
 
