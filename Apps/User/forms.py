@@ -56,20 +56,36 @@ class LoginForm(AuthenticationForm):
 class SignupForm(UserCreationForm):
     username = forms.CharField(
         required=True,
-        label='Número telefónico',
+        label='',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'N. telefonico'
+            })
         )
     first_name = forms.CharField(
         required=True,
-        label='Nombre(s)'
+        label='',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Nombre'
+            })
         )
     last_name = forms.CharField(
         required=True,
-        label='Apellido(s)'
+        label='',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Apellido'
+            })
         )
     email = forms.EmailField(
         required=True,
-        label='Correo electrónico',
-        help_text='Será necesario para poder recuperar tu contraseña'
+        label='',
+        help_text='Será necesario para poder recuperar tu contraseña',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Email'
+            })
         )
 
     class Meta:
