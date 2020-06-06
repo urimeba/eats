@@ -1,61 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <!-- Nucleo Icons -->
-    <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
-    <link href="./assets/css/font-awesome.css" rel="stylesheet" />
-    <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- CSS Files -->
-    <link href="/assets/css/argon-design-system.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio de sesion</title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="{% static '/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+  <link href="{% static '/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <link href=" {% static '/assets/css/font-awesome.css' %}  " rel="stylesheet" />
+  <link href=" {% static '/assets/css/nucleo-svg.css' %}  " rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
+  <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
 </head>
 
-<body>
-    <h1>Login</h1>
+<body class="register-page">
+
+
+
+  <div class="wrapper">
+    <div class="page-header bg-default">
+
+      <div class="bgImgRegister page-header-image "></div>
+      <div class="container" id="container">
+        
+        <div class="form-container sign-in-container">
+          <form action="{% url 'login' %}" method="POST" role="form">
+
+            <h2>Iniciar Sesión</h2>
+
+            <span class="text-default mb-4">Ingresa a tu cuenta</span>
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                </div>
+                {% csrf_token %}
+                  <!-- SI NO SE INGRESA CORRECTAMENTE EL USUARIO O CONTRASEÑA -->
+                  {{ form.username }}
+                <!-- <input class="form-control" placeholder="N. Telefónico" type="phone"> -->
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                {{ form.password }}
+                <!-- <input class="form-control" placeholder="Contraseña" type="password"> -->
+              </div>
+            </div>
+            <a style="font-size: 11px;" href="{% url 'verification' %}">Ya cuento con mi número de verificación</a>
+            <!-- <button class="btn btn-primary mt-3">Iniciar Sesión</button> -->
+            <input class="btn btn-primary mt-2" type="submit" name="Iniciar sesion" id="btn-iniciar" value="Iniciar sesión">
+          </form>
+        </div>
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-panel overlay-left">
+              <h1 class="text-white">¡Bienvenido!</h1>
+              <p>
+                ¿Ya tienes una cuenta? Inicia sesión aquí
+              </p>
+              <button class="btn btn-neutral btn-sm" id="signIn">Iniciar Sesión</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+              <h1 class="text-white">¡Hola, amigo!</h1>
+              <p>¿Aún no tienes cuenta? Registrate aquí</p>
+              <a href="{% url 'signup' %}" class="btn btn-neutral btn-sm" id="signUp">Registrarme</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- login -->
+  <div class="container position-relative">
+
     <!-- MENSAJE DE EXITO CUANDO EL REGISTRO DEL USUARIO ES EXITOSO -->
     {% if messages %}
     <ul class="messages">
-        {% for message in messages %}
-        <li>
-            {{ message }}
-        </li>
-        {% endfor %}
+      {% for message in messages %}
+      <li>
+        {{ message }}
+      </li>
+      {% endfor %}
     </ul>
     {% endif %}
 
-    <!-- FORMULARIO PARA INICIO DE SESION -->
-    <form action="{% url 'login' %}" method="POST">
-        {% csrf_token %}
-        <!-- SI NO SE INGRESA CORRECTAMENTE EL USUARIO O CONTRASEÑA -->
-        {{ form.as_p }}
-        <input type="submit" name="Iniciar sesion" id="btn-iniciar" value="Iniciar sesión">
-    </form>
-
-    <!-- BOTON QUE ENVIA A LA PAGINA DE REGISTRO -->
-    <a href="{% url 'signup' %}">
-        <button>Todavia no tengo cuenta</button>
-    </a>
+  </div>
 
 
-    <a href="{% url 'verification' %}">
-        <button>Ya cuento con mi codigo de verificación</button>
-    </a>
 
-    <!--   Core JS Files   -->
-    <script src="/assets/js/core/jquery.min.js" type="text/javascript"></script>
-    <script src="/assets/js/core/popper.min.js" type="text/javascript"></script>
-    <script src="/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!-- Template Scripts -->
-    <script src="/assets/js/argon-design-system.min.js?v=1.0.0" type="text/javascript"></script>
+  <!--   Core JS Files   -->
+  <script src="{% static '/assets/js/core/jquery.min.js' %} " type="text/javascript"></script>
+  <script src="{% static '/assets/js/core/popper.min.js' %} " type="text/javascript"></script>
+  <script src="{% static '/assets/js/core/bootstrap.min.js' %} " type="text/javascript"></script>
+  <script src="{% static '/assets/js/plugins/perfect-scrollbar.jquery.min.js' %} " type="text/javascript"></script>
+  <!-- Template Scripts -->
+  <script src="{% static '/assets/js/argon-design-system.js' %} " type="text/javascript"></script>
+  <!-- Custom scripts -->
+  <!-- <script src="{% static '/assets/js/login.js' %} " type="text/javascript"></script> -->
 </body>
 
 </html>

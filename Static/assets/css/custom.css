@@ -1,0 +1,10 @@
+.bgImgRegister{
+    position: absolute !important;
+    z-index: 1 !important;
+    background-image: url("../img/ill/register_bg.png");
+}
+
+.numVerif{
+    font-size: 10px !important;
+}
+
