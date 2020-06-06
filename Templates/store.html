@@ -1,15 +1,56 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'js/funcionesUriel.js' %}"></script>
     <title>Tienda</title>
 </head>
 <body>
-    Tienda aqui
+    Productos
+
+    <a href="{% url 'carrito' %}">
+        <button>
+            Ver carrito
+        </button>
+    </a>
+
+    {% if productos %}
+        {% for producto in productos %}
+        <div id='{{producto.id}}'>
+            <a href="{% url 'store-detail' producto.pk %}">
+                <p>{{producto.nombre}}</p>
+            </a>
+            <p>{{producto.descripcion}}</p>
+            <p>${{producto.costo}}</p>
+            <p>Días: {{producto.get_diaSemana_display}}</p>
+            <p> 
+                <img src="{{producto.imagen.url}}" alt="">
+            </p>
+
+            <p>Agregar al carrito</p>
+            <input id="input-{{producto.id}}" type='number' 
+            onkeydown="return false" value='1' 
+            max='{{producto.unidades}}' min='0'
+            data-precio="{{producto.costo}}"
+
+            >
+            <p>
+                <button data-id='{{producto.id}}' data-nombre='{{producto.nombre}}' onclick="agregarProducto(this)">
+                    Agregar
+                </button>
+            </p>
+
+
+        </div>
+        {% endfor %}
+    {% else %}
+    <p>No hay productos</p>
+    {% endif %}
 
     <a href="{% url 'logout' %}">
-        <button>Cerrar sesion</button>
+        <button>Cerrar sesión</button>
     </a>
     
 </body>
