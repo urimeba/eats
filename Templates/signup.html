@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load myfilters %}
 
 <head>
     <meta charset="UTF-8">
@@ -85,19 +86,19 @@
                             </div>
                         </div>
                         <div class="form-group mb-2">
-                            <div class="input-group input-group-alternative">
+                            <div class="input-group input-group-alternative passFormControl ">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                 </div>
-                                {{ form.password1 }}
+                                {{ form.password1 | addclass:'form-control' }}
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group input-group-alternative">
+                            <div class="input-group input-group-alternative passFormControl">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                 </div>
-                                {{ form.password2 }}
+                                {{ form.password2 | addclass:'form-control' }}
                             </div>
                         </div>
                         <input class="btn btn-primary mt-" type="submit" name="signup" id="btn-registro"
