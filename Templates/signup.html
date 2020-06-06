@@ -30,6 +30,21 @@
             <div class="bgImgRegister page-header-image "></div>
             <div class="container right-panel-active" id="container">
                 <div class="form-container sign-up-container">
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <!-- DESPLIEGUE DE ERRORES EN EL REGISTRO, COMO USERNAME DUPLICADO O CORREO DUPLICADO -->
+                                <div class="alert alert-danger">
+                                    <strong style="color: red">{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                <strong style="color: red">{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
                     <form action="{% url 'signup' %}" method="POST" role="form"">
                         {% csrf_token %}
                         <h2>Crear Cuenta</h2>
@@ -66,6 +81,7 @@
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                 </div>
                                 {{ form.email }}
+                                <small style="color: grey">{{ form.email.help_text }}</small>
                             </div>
                         </div>
                         <div class="form-group mb-2">

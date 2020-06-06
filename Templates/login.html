@@ -40,6 +40,19 @@
               <div class="input-group input-group-alternative">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                  {% if messages %}
+                  <ul class="messages">
+                      {% for message in messages %}
+                      <li>
+                          {{ message }}
+                      </li>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
+
+                  {% if form.errors %}
+                    <strong style="color: red">Tu usuario y contraseña no coinciden. Intenta nuevamente</strong>
+                  {% endif %}
                 </div>
                 {% csrf_token %}
                   <!-- SI NO SE INGRESA CORRECTAMENTE EL USUARIO O CONTRASEÑA -->
