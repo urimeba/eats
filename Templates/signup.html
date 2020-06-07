@@ -17,10 +17,10 @@
     <link href=" {% static '/assets/css/font-awesome.css' %}  " rel="stylesheet" />
     <link href=" {% static '/assets/css/nucleo-svg.css' %}  " rel="stylesheet" />
     <!-- CSS Files -->
+    <link href="{% static '/assets/css/custom.css' %} " type="text/css"  rel="stylesheet" />
     <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
-    <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
+    
 </head>
-
 <body class="register-page">
 
 
@@ -30,7 +30,7 @@
 
             <div class="bgImgRegister page-header-image "></div>
             <div class="container right-panel-active" id="container">
-                <div class="form-container sign-up-container">
+                <div class="d-none d-md-block form-container sign-up-container">
                     {% if form.errors %}
                         {% for field in form %}
                             {% for error in field.errors %}
@@ -82,15 +82,16 @@
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                 </div>
                                 {{ form.email }}
-                                <small style="color: grey">{{ form.email.help_text }}</small>
+                                
                             </div>
+                            <div style="font-size: 10px; color:gray;">Será necesario para recuperar tu cuenta.</div>
                         </div>
                         <div class="form-group mb-2">
                             <div class="input-group input-group-alternative passFormControl ">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                 </div>
-                                {{ form.password1 | addclass:'form-control' }}
+                                {{ form.password1 | addClassAndPlaceH:'form-control,Contraseña' }}
                             </div>
                         </div>
                         <div class="form-group">
@@ -98,7 +99,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                 </div>
-                                {{ form.password2 | addclass:'form-control' }}
+                                {{ form.password2 | addClassAndPlaceH:'form-control,Repetir Contraseña' }}
                             </div>
                         </div>
                         <input class="btn btn-primary mt-" type="submit" name="signup" id="btn-registro"
@@ -106,7 +107,7 @@
                     </form>
                 </div>
 
-                <div class="overlay-container">
+                <div class="d-none d-md-block overlay-container">
                     <div class="overlay">
                         <div class="overlay-panel overlay-left">
                             <h1 class="text-white">¡Bienvenido!</h1>
@@ -117,6 +118,89 @@
                         </div>
 
                     </div>
+                </div>
+
+                <div class="d-block d-md-none">
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <!-- DESPLIEGUE DE ERRORES EN EL REGISTRO, COMO USERNAME DUPLICADO O CORREO DUPLICADO -->
+                                <div class="alert alert-danger">
+                                    <strong style="color: red">{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                <strong style="color: red">{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form action="{% url 'signup' %}" method="POST" role="form"">
+                        {% csrf_token %}
+                        <h2>Crear Cuenta</h2>
+
+                        <span class=" text-default mb-4">Por favor ingresa tus datos</span>
+                        <div class="form-group mb-2">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                                </div>
+                                <div class="col">{{ form.username }}</div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <div class="row">
+                                <div class="col ">
+                                    <div class="input-group input-group-alternative">
+                                        {{ form.first_name }}
+                                    </div>
+                                </div>
+                                <div class="col ">
+                                    <div class="input-group input-group-alternative">
+                                        {{ form.last_name }}
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group mb-2">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                </div>
+                                <div class="col">{{ form.email }}</div>
+                                
+                            </div>
+                            <div style="font-size: 10px; color:gray;">Será necesario para recuperar tu cuenta.</div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <div class="input-group input-group-alternative passFormControl ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                </div>
+                               <div class="col">{{ form.password1 | addClassAndPlaceH:'form-control,Contraseña' }}</div> 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative passFormControl">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                </div>
+                                <div class="col">{{ form.password2 | addClassAndPlaceH:'form-control,Repetir Contraseña' }}</div>
+                                
+                            </div>
+                        </div>
+                        <input class="btn btn-primary mt-" type="submit" name="signup" id="btn-registro"
+                            value="Registrame">
+                            <div class="pt-3 pb-1">
+                                ¿Ya tienes una cuenta? Inicia sesión aquí
+                            </div>
+                            <a href="{% url 'login' %}" class="btn btn-success btn-sm" id="signIn">Iniciar Sesión</a>
+                    </form>
+                    
                 </div>
             </div>
         </div>

@@ -28,9 +28,9 @@
     <div class="page-header bg-default">
 
       <div class="bgImgRegister page-header-image "></div>
-      <div class="container" id="container">
+      <div class=" container" id="container">
         
-        <div class="form-container sign-in-container">
+        <div class="d-none d-md-block form-container sign-in-container">
           <form action="{% url 'login' %}" method="POST" role="form">
 
             <h2>Iniciar Sesión</h2>
@@ -74,7 +74,7 @@
             <input class="btn btn-primary mt-2" type="submit" name="Iniciar sesion" id="btn-iniciar" value="Iniciar sesión">
           </form>
         </div>
-        <div class="overlay-container">
+        <div class="d-none d-md-block overlay-container">
           <div class="overlay">
             <div class="overlay-panel overlay-left">
               <h1 class="text-white">¡Bienvenido!</h1>
@@ -89,6 +89,51 @@
               <a href="{% url 'signup' %}" class="btn btn-neutral btn-sm" id="signUp">Registrarme</a>
             </div>
           </div>
+        </div>
+        <div class="d-block d-md-none">
+          <form action="{% url 'login' %}" method="POST" role="form">
+
+            <h2>Iniciar Sesión</h2>
+
+            <span class="text-default mb-4">Ingresa a tu cuenta</span>
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                  {% if messages %}
+                  <ul class="messages">
+                      {% for message in messages %}
+                      <li>
+                          {{ message }}
+                      </li>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
+
+                  {% if form.errors %}
+                    <strong style="color: red">Tu usuario y contraseña no coinciden. Intenta nuevamente</strong>
+                  {% endif %}
+                </div>
+                {% csrf_token %}
+                  <!-- SI NO SE INGRESA CORRECTAMENTE EL USUARIO O CONTRASEÑA -->
+                  {{ form.username }}
+                <!-- <input class="form-control" placeholder="N. Telefónico" type="phone"> -->
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                </div>
+                {{ form.password }}
+                <!-- <input class="form-control" placeholder="Contraseña" type="password"> -->
+              </div>
+            </div>
+            <a style="font-size: 11px;" href="{% url 'verification' %}">Ya cuento con mi número de verificación</a>
+            <!-- <button class="btn btn-primary mt-3">Iniciar Sesión</button> -->
+            <input class="btn btn-primary mt-2" type="submit" name="Iniciar sesion" id="btn-iniciar" value="Iniciar sesión">
+            <a href="{% url 'signup' %}" class=" btn btn-success btn-sm mt-2 " id="signUp">Aún no tengo cuenta</a>
+          </form>
         </div>
       </div>
     </div>
