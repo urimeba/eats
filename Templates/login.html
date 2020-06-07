@@ -75,6 +75,7 @@
     </nav>
     <!-- End Navbar -->
 
+<<<<<<< HEAD
     <div class="wrapper">
         <div class="page-header bg-default">
             
@@ -93,6 +94,38 @@
                   <button type="button" class="btn btn-twitter btn-sm">
                     <span class="btn-inner--icon"><i class="fab fa-twitter"></i></span>
                   </button>
+=======
+
+  <div class="wrapper">
+    <div class="page-header bg-default">
+
+      <div class="bgImgRegister page-header-image "></div>
+      <div class="container" id="container">
+        
+        <div class="form-container sign-in-container">
+          <form action="{% url 'login' %}" method="POST" role="form">
+
+            <h2>Iniciar Sesión</h2>
+
+            <span class="text-default mb-4">Ingresa a tu cuenta</span>
+            <div class="form-group mb-3">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                  {% if messages %}
+                  <ul class="messages">
+                      {% for message in messages %}
+                      <li>
+                          {{ message }}
+                      </li>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
+
+                  {% if form.errors %}
+                    <strong style="color: red">Tu usuario y contraseña no coinciden. Intenta nuevamente</strong>
+                  {% endif %}
+>>>>>>> 6a15986df2715ad395297399f4e00a5ba8c68910
                 </div>
                 <span class="text-default mb-4">or use your email for registration</span>
                 <div class="form-group mb-3">

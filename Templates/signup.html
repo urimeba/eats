@@ -1,10 +1,17 @@
  <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
+=======
+{% load static %}
+{% load myfilters %}
+
+>>>>>>> 6a15986df2715ad395297399f4e00a5ba8c68910
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrate</title>
 </head>
+<<<<<<< HEAD
 <body>
 
     <p>Todos los datos son requeridos</p>
@@ -21,5 +28,128 @@
         <button>Ya tengo cuenta</button>
     </a>
     
+=======
+
+<body class="register-page">
+
+
+
+    <div class="wrapper">
+        <div class="page-header bg-default">
+
+            <div class="bgImgRegister page-header-image "></div>
+            <div class="container right-panel-active" id="container">
+                <div class="form-container sign-up-container">
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                            <!-- DESPLIEGUE DE ERRORES EN EL REGISTRO, COMO USERNAME DUPLICADO O CORREO DUPLICADO -->
+                                <div class="alert alert-danger">
+                                    <strong style="color: red">{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                <strong style="color: red">{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form action="{% url 'signup' %}" method="POST" role="form"">
+                        {% csrf_token %}
+                        <h2>Crear Cuenta</h2>
+
+                        <span class=" text-default mb-4">Por favor ingresa tus datos</span>
+                        <div class="form-group mb-2">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                                </div>
+                                {{ form.username }}
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <div class="row">
+                                <div class="col ">
+                                    <div class="input-group input-group-alternative">
+                                        {{ form.first_name }}
+                                    </div>
+                                </div>
+                                <div class="col ">
+                                    <div class="input-group input-group-alternative">
+                                        {{ form.last_name }}
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="form-group mb-2">
+                            <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                                </div>
+                                {{ form.email }}
+                                <small style="color: grey">{{ form.email.help_text }}</small>
+                            </div>
+                        </div>
+                        <div class="form-group mb-2">
+                            <div class="input-group input-group-alternative passFormControl ">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                </div>
+                                {{ form.password1 | addclass:'form-control' }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-alternative passFormControl">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                </div>
+                                {{ form.password2 | addclass:'form-control' }}
+                            </div>
+                        </div>
+                        <input class="btn btn-primary mt-" type="submit" name="signup" id="btn-registro"
+                            value="Registrame">
+                    </form>
+                </div>
+
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <h1 class="text-white">¡Bienvenido!</h1>
+                            <p>
+                                ¿Ya tienes una cuenta? Inicia sesión aquí
+                            </p>
+                            <a href="{% url 'login' %}" class="btn btn-neutral btn-sm" id="signIn">Iniciar Sesión</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- {{ form.as_p }} -->
+
+    </div>
+
+
+
+
+
+    <!--   Core JS Files   -->
+    <script src="{% static '/assets/js/core/jquery.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/assets/js/core/popper.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/assets/js/core/bootstrap.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/assets/js/plugins/perfect-scrollbar.jquery.min.js' %} " type="text/javascript"></script>
+    <!-- Template Scripts -->
+    <script src="{% static '/assets/js/argon-design-system.js' %} " type="text/javascript"></script>
+    <!-- Custom scripts -->
+    <!-- <script src="{% static '/assets/js/login.js' %} " type="text/javascript"></script> -->
+
+
+    <!-- <p>Todos los datos son requeridos</p> -->
+
+>>>>>>> 6a15986df2715ad395297399f4e00a5ba8c68910
 </body>
 </html>
