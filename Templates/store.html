@@ -1,57 +1,136 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{% static 'js/funcionesUriel.js' %}"></script>
-    <title>Tienda</title>
+    <title>Inicio de sesion</title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="{% static '/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+    <link href="{% static '/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link href=" {% static '/assets/css/font-awesome.css' %}  " rel="stylesheet" />
+    <link href=" {% static '/assets/css/nucleo-svg.css' %}  " rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
+    <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
 </head>
-<body>
-    Productos
 
-    <a href="{% url 'carrito' %}">
-        <button>
-            Ver carrito
-        </button>
-    </a>
+<body >
 
-    {% if productos %}
-        {% for producto in productos %}
-        <div id='{{producto.id}}'>
-            <a href="{% url 'store-detail' producto.pk %}">
-                <p>{{producto.nombre}}</p>
+    <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-dark bg-primary headroom">
+        <div class="container">
+            <a class="navbar-brand mr-lg-5" href="index.html">
+                <img src="./assets/img/brand/white.png">
             </a>
-            <p>{{producto.descripcion}}</p>
-            <p>${{producto.costo}}</p>
-            <p>Días: {{producto.get_diaSemana_display}}</p>
-            <p> 
-                <img src="{{producto.imagen.url}}" alt="">
-            </p>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="index.html">
+                                <img src="./assets/img/brand/blue.png">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+                    <li class="nav-item dropdown  ">
+                        <a href="javascript:;" class="nav-link" data-toggle="dropdown" role="button">
+                            <i class="ni ni-ui-04 d-lg-none"></i>
+                            <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown ">
+                        <a href="javascript:;" class="nav-link" data-toggle="dropdown" role="button">
+                            <i class="ni ni-ui-04 d-lg-none"></i>
+                            <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
+                        </a>
+                    </li>
 
-            <p>Agregar al carrito</p>
-            <input id="input-{{producto.id}}" type='number' 
-            onkeydown="return false" value='1' 
-            max='{{producto.unidades}}' min='0'
-            data-precio="{{producto.costo}}"
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <div class=" bgImgStore"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-7 mr-auto text-left d-flex justify-content-center flex-column">
+                    <h3 class="display-1">UAQEats</h3>
+                    <p class="display-4 mt-0">Agradecemos tu preferencia, abajo encontrarás el Menú que tenemos el dia de hoy
+                        ¡Buen provecho! </p>
+                    <br />
+                    <div class="buttons">
+                        <a href="#" class="btn btn-danger">
+                            Entendido
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            >
-            <p>
-                <button data-id='{{producto.id}}' data-nombre='{{producto.nombre}}' onclick="agregarProducto(this)">
+    <div class="container " >
+        <h2 align="center" class="productSectionTitle">Menu del dia</h2>
+        {% if productos %}
+        <div class="d-flex flex-wrap justify-content-center">
+            {% for producto in productos %}
+            <div id="{{producto.id}}" class="productBody">
+                <img class="productImage" src="{{producto.imagen.url}}" alt="">
+                <a href="{% url 'store-detail' producto.pk %}">
+                    <h3 class="productName"> {{producto.nombre}}</h3>
+                    </a>
+                <p class="productDescription">{{producto.descripcion}}</p>
+                <div class="row productInfo">
+                    <div class="col pl-0">
+                        <p align='left'>Costo: ${{producto.costo}}</p>
+                    </div>
+                    <div class="col">
+                        <p>Días: {{producto.get_diaSemana_display}}</p>
+                    </div>
+                </div>
+                <div class="d-flex productInfo">
+                    <p>Agregar al carrito</p>
+                    <input class="productInput" id="input-{{producto.id}}" type='number' onkeydown="return false" value='1'
+                    max='{{producto.unidades}}' min='0' data-precio="{{producto.costo}}">
+                </div>
+    
+                <button class="productInfo btn btn-primary btn-sm" data-id='{{producto.id}}' data-nombre='{{producto.nombre}}' onclick="agregarProducto(this)">
                     Agregar
                 </button>
-            </p>
-
-
-        </div>
-        {% endfor %}
-    {% else %}
-    <p>No hay productos</p>
-    {% endif %}
-
-    <a href="{% url 'logout' %}">
-        <button>Cerrar sesión</button>
-    </a>
+            </div>
     
+            
+            {% endfor %}
+        </div>
+    
+        {% else %}
+        <p>No hay productos</p>
+        {% endif %}
+    </div>
+    
+
+
+    
+
+
 </body>
+
 </html>
