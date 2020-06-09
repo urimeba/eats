@@ -29,7 +29,7 @@ class Producto(models.Model):
 class ProductosPedido(models.Model):
     producto = models.ForeignKey('Producto', on_delete=models.CASCADE)
     pedido = models.ForeignKey('Pedido', on_delete=models.CASCADE)
-    calificacion = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    calificacion = models.PositiveIntegerField(null=True, blank=True, validators=[MinValueValidator(1), MaxValueValidator(5)])
 
 class Pedido(models.Model):
     ESTADOS = [
@@ -43,5 +43,6 @@ class Pedido(models.Model):
     costoTotal = models.DecimalField(max_digits=4, decimal_places=2)
     estado = models.CharField(max_length=2, choices=ESTADOS, null=False, blank=False, )
     fecha = models.DateTimeField(auto_now=False, auto_now_add=True)
+    # pago = models.DecimalField(max_digits=4, decimal_places=2, default=01.00)
     # cancelado = 3 minutos
 

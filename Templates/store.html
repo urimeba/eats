@@ -19,6 +19,8 @@
     <!-- CSS Files -->
     <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
     <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
+    <!-- JS files -->
+    <script src="{% static 'js/funcionesUriel.js' %}"></script>
 </head>
 
 <body >
@@ -109,7 +111,7 @@
                 <div class="d-flex productInfo">
                     <p>Agregar al carrito</p>
                     <input class="productInput" id="input-{{producto.id}}" type='number' onkeydown="return false" value='1'
-                    max='{{producto.unidades}}' min='0' data-precio="{{producto.costo}}">
+                    max='{% if producto.unidades > 3 %}3{% else %}{{producto.unidades}}{% endif %}' min='1' data-precio="{{producto.costo}}">
                 </div>
     
                 <button class="productInfo btn btn-primary btn-sm" data-id='{{producto.id}}' data-nombre='{{producto.nombre}}' onclick="agregarProducto(this)">

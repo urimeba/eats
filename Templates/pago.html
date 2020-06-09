@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar compra</title>
+    <script src="{% static 'js/funcionesUriel.js' %}"></script>
+</head>
+<body>
+    <script>
+        window.onload=function(){
+            initCarrito();
+
+            let pedidos = JSON.parse(localStorage.getItem("pedidos"));
+            let keys = Object.keys(pedidos);
+            let total = 0;
+
+            for (let x = 0; x < Object.keys(pedidos).length; x++) {
+                let key = keys[x];
+                total += parseFloat(pedidos[key]['total']);
+            }
+            // alert(total);
+
+            let iptEfectivo = document.getElementById('iptEfectivo');
+            let creditos = "{{request.user.creditos}}"
+            iptEfectivo.value=total-creditos;
+        }
+    </script>
+
+    Pago
+
+    <p id="pedidos">
+    </p>
+
+    <p>Metodos de pago</p>
+    <div>
+        <input type="checkbox" id="cbox1" value="efectivo"> 
+        <label for="cbox1">Efectivo: 
+            <input id="iptEfectivo" type="number" value="0" disabled> 
+        </label> 
+    </div>
+
+    <div>
+        <input type="checkbox" id="cbox2" value="credito"> 
+        <label for="cbox2">Creditos: 
+            <input onchange="calcularEfectivo(this)" id="iptCreditos" type="number" value="{{request.user.creditos}}" min="0" max="{{request.user.creditos}}" onkeydown="return false"> 
+        </label>
+    </div>
+
+    <button id="terminarCompra" onclick="pagar()">
+        Pagar
+    </button>
+    
+
+    
+
+</body>
+</html>

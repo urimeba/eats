@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis pedidos</title>
+</head>
+<body>
+    {% for pedido in pedidos %}
+        <div>
+            <p>Pedido #{{pedido.id}}</p>
+            <p>Total: </p>
+
+        </div>
+    {% endfor %}
+    
+</body>
+</html>
+
+    costoTotal = models.DecimalField(max_digits=4, decimal_places=2)
+    estado = models.CharField(max_length=2, choices=ESTADOS, null=False, blank=False, )
+    fecha = models.DateTimeField(auto_now=False, auto_now_add=True)
