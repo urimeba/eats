@@ -1,57 +1,188 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesion</title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="{% static '/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+    <link href="{% static '/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link href=" {% static '/assets/css/font-awesome.css' %}  " rel="stylesheet" />
+    <link href=" {% static '/assets/css/nucleo-svg.css' %}  " rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
+    <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
+    <!-- JS files -->
     <script src="{% static 'js/funcionesUriel.js' %}"></script>
-    <title>Tienda</title>
 </head>
+
 <body>
-    Productos
 
-    <a href="{% url 'carrito' %}">
-        <button>
-            Ver carrito
-        </button>
-    </a>
-
-    {% if productos %}
-        {% for producto in productos %}
-        <div id='{{producto.id}}'>
-            <a href="{% url 'store-detail' producto.pk %}">
-                <p>{{producto.nombre}}</p>
+    <nav id="navbar-main" style="position: fixed;" class="navbar navbar-main navbar-expand-lg navbar-dark bg-primary headroom">
+        <div class="container">
+            <a class="navbar-brand mr-lg-5" href="index.html">
+                <img src="./assets/img/brand/white.png">
             </a>
-            <p>{{producto.descripcion}}</p>
-            <p>${{producto.costo}}</p>
-            <p>Días: {{producto.get_diaSemana_display}}</p>
-            <p> 
-                <img src="{{producto.imagen.url}}" alt="">
-            </p>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="index.html">
+                                <img src="./assets/img/brand/blue.png">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+                    <li class="nav-item dropdown pr-4  ">
 
-            <p>Agregar al carrito</p>
-            <input id="input-{{producto.id}}" type='number' 
-            onkeydown="return false" value='1' 
-            max='{{producto.unidades}}' min='0'
-            data-precio="{{producto.costo}}"
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
 
-            >
-            <p>
-                <button data-id='{{producto.id}}' data-nombre='{{producto.nombre}}' onclick="agregarProducto(this)">
+                    </li>
+                    <li class="nav-item dropdown ">
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <div class=" bgImgStore"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-7 mr-auto text-left d-flex justify-content-center flex-column">
+                    <h3 class="display-1">UAQEats</h3>
+                    <p class="display-4 mt-0">Agradecemos tu preferencia, abajo encontrarás el Menú que tenemos el dia
+                        de hoy
+                        ¡Buen provecho! </p>
+                    <br />
+                    <div class="buttons">
+                        <a href="#" class="btn btn-danger">
+                            Entendido
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid ">
+        <h2 align="center" class="productSectionTitle">Menu del dia</h2>
+        {% if productos %}
+        <div class="d-flex flex-wrap justify-content-center">
+            {% for producto in productos %}
+            <div id="{{producto.id}}" class="productBody">
+                <img class="productImage" src="{{producto.imagen.url}}" alt="">
+                <a href="{% url 'store-detail' producto.pk %}">
+                    <h3 class="productName"> {{producto.nombre}}</h3>
+                </a>
+                <p class="productDescription">{{producto.descripcion}}</p>
+                <div class="row productInfo productPrice">
+                    <div class="col pl-0">
+                        <p align='left' style="font-weight: 400; font-size: 15px;">Costo: ${{producto.costo}}</p>
+                    </div>
+                    <div class="col">
+                        <p style="font-weight: 400; font-size: 15px;">Días: {{producto.get_diaSemana_display}}</p>
+                    </div>
+                </div>
+                <div class="d-flex productInfo">
+                    <p class="productInputLabel">Agregar al carrito: </p>
+                    <input class="productInput" id="input-{{producto.id}}" type='number' onkeydown="return false"
+                        value='1' max='{{producto.unidades}}' min='0' data-precio="{{producto.costo}}">
+                    max='{% if producto.unidades > 3 %}3{% else %}{{producto.unidades}}{% endif %}' min='1' data-precio="{{producto.costo}}">
+                </div>
+
+                <button class="productInfo productBtn btn btn-primary" data-id='{{producto.id}}'
+                    data-nombre='{{producto.nombre}}' onclick="agregarProducto(this)">
                     Agregar
                 </button>
-            </p>
+            </div>
 
 
+            {% endfor %}
         </div>
-        {% endfor %}
-    {% else %}
-    <p>No hay productos</p>
-    {% endif %}
 
-    <a href="{% url 'logout' %}">
-        <button>Cerrar sesión</button>
-    </a>
-    
+        {% else %}
+        <p>No hay productos</p>
+        {% endif %}
+    </div>
+
+    <footer class="footerStore">
+        <div class="container">
+            <div class="row row-grid align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h3 class="text-primary font-weight-light mb-2 pt-5">¡Gracias por tu preferencia!</h3>
+                    <h4 class="mb-0 font-weight-light">En UAQeats nos seguiremos esforzando para darte el mejor
+                        servicio.</h4>
+                </div>
+                <div class="col-lg-6 text-lg-center btn-wrapper">
+                    <button target="_blank" href="https://twitter.com/creativetim" rel="nofollow"
+                        class="btn btn-icon-only btn-twitter rounded-circle" data-toggle="tooltip"
+                        data-original-title="Follow us">
+                        <span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
+                    </button>
+                    <button target="_blank" href="https://www.facebook.com/CreativeTim/" rel="nofollow"
+                        class="btn-icon-only rounded-circle btn btn-facebook" data-toggle="tooltip"
+                        data-original-title="Like us">
+                        <span class="btn-inner--icon"><i class="fab fa-facebook"></i></span>
+                    </button>
+                    <button target="_blank" href="https://dribbble.com/creativetim" rel="nofollow"
+                        class="btn btn-icon-only btn-dribbble rounded-circle" data-toggle="tooltip"
+                        data-original-title="Follow us">
+                        <span class="btn-inner--icon"><i class="fa fa-dribbble"></i></span>
+                    </button>
+                    <button target="_blank" href="https://github.com/creativetimofficial" rel="nofollow"
+                        class="btn btn-icon-only btn-github rounded-circle" data-toggle="tooltip"
+                        data-original-title="Star on Github">
+                        <span class="btn-inner--icon"><i class="fa fa-github"></i></span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <div class="row align-items-center justify-content-md-between">
+                <div class="col-md-6">
+                    <div class="copyright">
+                        &copy; 2020 <a href="" target="_blank">UAQEats</a>.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav nav-footer justify-content-end">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
 </body>
+
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis pedidos</title>
+</head>
+<body>
+    Pedidos de {{request.user.first_name}} {{request.user.last_name}}
+    {% for pedido in pedidos %}
+        <div>
+            <p>Pedido #{{pedido.id}}</p>
+            <p>Total: ${{pedido.costoTotal}}</p>
+            <p>Estado: {{pedido.get_estado_display}}</p>
+            <p>Fecha: {{pedido.fecha}}</p>
+            <p>Pago pendiente: ${{pedido.pago}} (Efectivo)</p>
+
+        </div>
+    {% endfor %}
+    
+</body>
+</html>
