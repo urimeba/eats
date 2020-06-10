@@ -12,6 +12,7 @@ body{
     background-position: center right !important;
     background-image: url("../img/ill/p2.svg");
     position: absolute;
+    z-index: -1;
     right: 0px;
     top: 0;
     background-repeat: no-repeat;
@@ -25,6 +26,7 @@ body{
 
 .menuLink {
     color: white;
+    
 }
 
 .productBody {
@@ -33,9 +35,9 @@ body{
     width: 300px;
     height: 400px;
     position: relative;
-    margin-right: 40px;
-    margin-left: 40px;
-    margin-bottom: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 60px;
     -webkit-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
@@ -43,8 +45,14 @@ body{
 
 .productImage {
     height: 50%;
-    width: 100%;
-    /* background-color: black; */
+    width: 90%;
+    left: 50%;
+    top: -20px;
+    margin-left: -135px;
+    position: absolute;
+    -webkit-box-shadow: 0px 1px 10px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 1px 10px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 1px 10px -6px rgba(0, 0, 0, 0.75);
     border-radius: 10px 10px 0 0;
 }
 
@@ -52,30 +60,66 @@ body{
     font-size: 20px !important;
     color: rgb(28, 52, 172);
     font-weight: 700;
-    margin-left: 12px;
-    margin-right: 12px;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: absolute;
+    top: 46%;
     
 }
 .productDescription{
-    font-size: 14px !important;
-    color: rgb(32, 32, 42);
+    font-size: 13px !important;
+    color: rgb(60, 60, 68);
     font-weight: 400;
-    margin-left: 12px;
-    margin-right: 12px;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: absolute;
+    top: 54%;
+    height: 50px;
+    overflow: hidden;
+    font-weight: 500;
+    line-height: 16px;
     
 }
 
 .productInfo{
     
-    margin-left: 12px;
-    margin-right: 12px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
+.productPrice{
+    margin-left: 15px;
+    margin-right: 15px;
+    position: absolute;
+    top: 68%;
+    width: 100%;
+    
+}
+
+
 .productInput{
-    border: 1px solid #f1f1f1;
-    width: 50%;
+    border: 1px solid #A9ECD0;
+    width: 45%;
     height: 20px;
-    margin-left: 10px;
+    left: 45%;
+    position: absolute;
+    top: 77%;
+    margin-top: 2px;
+    font-size: 13px;
+}
+
+.productInputLabel{
+    font-size: 14px;
+    position: absolute;
+    top: 77%;
+}
+
+.productBtn{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -60px;
+    margin-bottom: 10px;
 }
 
 .bgProductSection{
@@ -84,9 +128,40 @@ body{
     height: 100%;
 }
 
+
 .productSectionTitle{
     color: #32325D;
     font-size: 42px;
     padding-bottom: 2rem;
+
+}
+
+.footerStore{
+    background: rgb(182, 189, 231);
+}
+
+@media (max-width: 480px){
+
+    .productBody {
+        background-color: #ffffff;
+        border-radius: 10px;
+        width: 300px;
+        height: 400px;
+        position: relative;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 60px;
+        -webkit-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+    }
+
+    .productInput{
+        border: 1px solid #f1f1f1;
+        width: 40%;
+        height: 20px;
+        margin-left: 10px;
+    }
+
 
 }
