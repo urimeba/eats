@@ -177,6 +177,7 @@ agregarCarrito = (id, nombre, precio, unidades) => {
 }
 
 checkBotonCompra = (numeroProductos) =>{
+    // alert(numeroProductos);
     try{
         let btnTerminarCompra = document.querySelector('#terminarCompra');
         if(numeroProductos>0){
@@ -259,7 +260,7 @@ pagar = () => {
         )
 
         alert("Tu pedido ha sido creado. Seras redireccionado a tus pedidos");
-        localStorage.removeItem('pedidos');
+        localStorage.setItem('pedidos', '{}');
         window.location='http://127.0.0.1:8000/store/pedidos';
     }
 
