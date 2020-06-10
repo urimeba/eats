@@ -73,9 +73,37 @@
                             
                         </div>
                     </div>
-                </div>            
-            </div>
-           
+
+                    <div class="d-block d-md-none">
+                                                <form action="{% url 'verification' %}" method="POST" role="form">
+
+                            <h2>Verificación</h2>
+                            {% csrf_token %}
+                            <span class="text-default mb-4">Ingresa tu número de teléfono y código de confirmación</span>
+                                <div class="form-group ">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                                        </div>
+                                        {{ form.username | addClassAndPlaceH:'form-control,Número de Teléfono'}} 
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        </div>
+                                        {{ form.verification_code | addClassAndPlaceH:'form-control,Código de confirmación'}}
+                                        
+                                    </div>
+                                </div>
+                            <input class= "btn btn-primary mt-2" type="submit" name "Verificacion" id="btn-verificar"value="Verificar mi cuenta">
+                        </form>
+                    </div>
+
+                </div>                       
        </div>
     </div>
 
