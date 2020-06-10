@@ -1,19 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verifica tu cuenta</title>
-</head>
-<body>
-    Ingresa tu codigo de verificacion enviado a tu telefono
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Verificar mi cuenta">
+{% load static %}
+{% load myfilters %}
 
-    </form>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación</title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <!-- Nucleo Icons -->
+  <link href="{% static '/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+  <link href="{% static '/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <link href=" {% static '/assets/css/font-awesome.css' %}  " rel="stylesheet" />
+  <link href=" {% static '/assets/css/nucleo-svg.css' %}  " rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
+  <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
+</head>
+
+<body class="register-page">
     
-    
+    <div class="wrapper">
+        <div class="page-header bg-default">
+
+            <div class="bgImgRegister page-header-image "></div>
+                <div class=" container" id="container">
+            
+                    <div class="d-none d-md-block form-container sign-in-container">
+                        <form action="{% url 'verification' %}" method="POST" role="form">
+
+                            <h2>Verificación</h2>
+                            {% csrf_token %}
+                            <span class="text-default mb-4">Ingresa tu número de teléfono y código de confirmación</span>
+                                <div class="form-group ">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-mobile-button"></i></span>
+                                        </div>
+                                        {{ form.username | addClassAndPlaceH:'form-control,Número de Teléfono'}} 
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                        </div>
+                                        {{ form.verification_code | addClassAndPlaceH:'form-control,Código de confirmación'}}
+                                        
+                                    </div>
+                                </div>
+                            <input class= "btn btn-primary mt-2" type="submit" name "Verificacion" id="btn-verificar"value="Verificar mi cuenta">
+                        </form>
+
+                    </div>
+                    <div class="d-none d-md-block overlay-container">
+                        <div class="overlay">
+                            <div class="overlay-panel overlay-left">
+                                <h1 class="text-white">¡Bienvenido!</h1>
+                                <p>¿Ya tienes una cuenta? Inicia sesión aquí</p>
+                                <button class="btn btn-neutral btn-sm" id="signIn">Iniciar Sesión</button>
+                            </div>
+                            <div class="overlay-panel overlay-right">
+                            <h1 class="text-white">¡Hola, amigo!</h1>
+                            <p>¿Aún no tienes cuenta? Registrate ahora</p>
+                            <a href="{% url 'signup' %}" class="btn btn-neutral btn-sm" id="signUp">Registrarme</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>            
+            </div>
+           
+       </div>
+    </div>
+
+  <!--   Core JS Files   -->
+  <script src="{% static '/assets/js/core/jquery.min.js' %} " type="text/javascript"></script>
+  <script src="{% static '/assets/js/core/popper.min.js' %} " type="text/javascript"></script>
+  <script src="{% static '/assets/js/core/bootstrap.min.js' %} " type="text/javascript"></script>
+  <script src="{% static '/assets/js/plugins/perfect-scrollbar.jquery.min.js' %} " type="text/javascript"></script>
+  <!-- Template Scripts -->
+  <script src="{% static '/assets/js/argon-design-system.js' %} " type="text/javascript"></script>
+  <!-- Custom scripts -->
+  <!-- <script src="{% static '/assets/js/login.js' %} " type="text/javascript"></script> -->
 </body>
 </html>
