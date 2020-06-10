@@ -33,9 +33,6 @@ class PedidosView(ListView):
     template_name = 'pedidos_cliente.html'
 
     def get_queryset(self):
-        # queryset = super(PedidosView, self).get_queryset
-        # queryset = queryset.filter(usuario = self.request.user).order_by('-fecha')
-
         queryset = Pedido.objects.filter(usuario=self.request.user)
 
         return queryset
@@ -43,11 +40,13 @@ class PedidosView(ListView):
 
 def crearPedido(request):
     data = json.loads(request.body)
+    pago = data['pago']
     total = data['total']
     new_pedido = Pedido(
         usuario = request.user,
         costoTotal = total,
-        estado = 'AC'
+        estado = 'AC',
+        pago = pago
     )
     new_pedido.save()
 
@@ -56,10 +55,10 @@ def crearPedido(request):
     for pedido in pedidos:
         producto = pedidos[pedido]
         new_pedido_producto = ProductosPedido(
-            producto__id = producto['id'],
+            producto_id = producto['id'],
             pedido = new_pedido,
         )
-        new_pedidos_producto.save()
+        new_pedido_producto.save()
 
     return HttpResponse('Hola')
 

@@ -6,17 +6,17 @@
     <title>Mis pedidos</title>
 </head>
 <body>
+    Pedidos de {{request.user.first_name}} {{request.user.last_name}}
     {% for pedido in pedidos %}
         <div>
             <p>Pedido #{{pedido.id}}</p>
-            <p>Total: </p>
+            <p>Total: ${{pedido.costoTotal}}</p>
+            <p>Estado: {{pedido.get_estado_display}}</p>
+            <p>Fecha: {{pedido.fecha}}</p>
+            <p>Pago pendiente: ${{pedido.pago}} (Efectivo)</p>
 
         </div>
     {% endfor %}
     
 </body>
 </html>
-
-    costoTotal = models.DecimalField(max_digits=4, decimal_places=2)
-    estado = models.CharField(max_length=2, choices=ESTADOS, null=False, blank=False, )
-    fecha = models.DateTimeField(auto_now=False, auto_now_add=True)

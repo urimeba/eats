@@ -243,7 +243,7 @@ pagar = () => {
             "Accept":'application/json',
             'X-Requested-With':"XMLHttpRequest"
         },
-        body: JSON.stringify({'pedidos':pedidos, 'total':total}),
+        body: JSON.stringify({'pedidos':pedidos, 'total':total, 'pago':efectivo}),
         mode: 'cors',
         cache: 'default',
         credentials: 'include'
