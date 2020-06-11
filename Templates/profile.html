@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil</title>
+</head>
+<body>
+
+    Mi perfil
+
+    Teléfono: {{request.user.username}}
+    Correo : {{request.user.email}}
+    Creditos: {{request.user.creditos}}
+
+    Nivel: {{nivel.nivel.nombre}} 
+    Requisitos: {{nivel.nivel.descripcion}}
+    # de pedidos actuales: {{numero_pedidos}}
+    # de pedidos necesarios: {{nivel.nivel.noComidas|add:nivel.nivel.noProductos}}
+    Recompensa: {{nivel.nivel.beneficios}}
+    
+
+    <a href="{% url 'password' %}">
+        <button>
+            Cambiar contraseña
+        </button>
+    </a>
+
+    <a href="{% url 'store' %}">
+        <button>
+            Regresar a la plataforma
+        </button>
+    </a>
+
+
+    
+</body>
+</html>

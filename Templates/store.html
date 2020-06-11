@@ -62,9 +62,22 @@
                     <li class="nav-item dropdown ">
 
                         <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'pedidos_cliente' %}">Mis pedidos</a>
+
+                    </li>
+                    <li class="nav-item dropdown ">
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'profile' %}">Mi perfil</a>
+
+                    </li>
+                    <li class="nav-item dropdown ">
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
                         <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
 
                     </li>
+                    
 
                 </ul>
             </div>
@@ -112,8 +125,7 @@
                 <div class="d-flex productInfo">
                     <p class="productInputLabel">Agregar al carrito: </p>
                     <input class="productInput" id="input-{{producto.id}}" type='number' onkeydown="return false"
-                        value='1' max='{{producto.unidades}}' min='0' data-precio="{{producto.costo}}">
-                    max='{% if producto.unidades > 3 %}3{% else %}{{producto.unidades}}{% endif %}' min='1' data-precio="{{producto.costo}}">
+                        value='1' max='{% if producto.unidades > 3 %}3{% else %}{{producto.unidades}}{% endif %}' min='1' data-precio="{{producto.costo}}">
                 </div>
 
                 <button class="productInfo productBtn btn btn-primary" data-id='{{producto.id}}'

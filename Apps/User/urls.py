@@ -8,5 +8,9 @@ urlpatterns = [
     path('registro', views_user.CustomSignup.as_view(), name="signup"),
     path('verificar', views_user.CustomVerification.as_view(), name="verification"),
     path('logout', login_required(views_user.CustomLogout.as_view()), name="logout"),
+    path('profile', login_required(views_user.CustomProfile.as_view()), name="profile"),
+    path('password', login_required(views_user.CustomResetPassword), name="password"),
+
+    path('wrapper', views_user.wrapper, name='wrapper')
     
 ]

@@ -1,0 +1,285 @@
+{% extends 'crm/sidenav.html' %}
+
+{% block title %}
+Default
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+      <div class="card card-stats">
+        <!-- Card body -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Total traffic</h5>
+              <span class="h2 font-weight-bold mb-0">350,897</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                <i class="ni ni-active-40"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-sm">
+            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+            <span class="text-nowrap">Since last month</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+      <div class="card card-stats">
+        <!-- Card body -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h6 class="card-title text-uppercase text-muted mb-0">Nuevos usuarios</h6>
+              <span class="h2 font-weight-bold mb-0">{{new_users}}</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                <i class="ni ni-chart-pie-35"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-sm">
+            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i>{{porcentaje_usuarios}}%</span>
+            <span class="text-nowrap">desde el último mes</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+      <div class="card card-stats">
+        <!-- Card body -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Ventas</h5>
+              <span class="h2 font-weight-bold mb-0">{{nuevos_pedidos}}</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                <i class="ni ni-money-coins"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-sm">
+            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i>{{porcentaje_ventas}}%</span>
+            <span class="text-nowrap">desde el último mes</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+      <div class="card card-stats">
+        <!-- Card body -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Rendimiento</h5>
+              <span class="h2 font-weight-bold mb-0">${{promedio_nuevas_ventas}}</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                <i class="ni ni-chart-bar-32"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-sm">
+            <span class="text-success mr-2"><i class="fa fa-arrow-up"></i>{{porcentaje_promedio_ventas}}%</span>
+            <span class="text-nowrap">desde el último mes</span>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page %}
+<div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col-xl-8">
+        <div class="card bg-default">
+          <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+              <div class="col">
+                <h6 class="text-light text-uppercase ls-1 mb-1">Vista general</h6>
+                <h5 class="h3 text-white mb-0">Valor de ventas</h5>
+              </div>
+              <div class="col">
+                <ul class="nav nav-pills justify-content-end">
+                  <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[15, 35 , 38, 12, 1, 1, 1, 1]}]}}' data-prefix="$" data-suffix="k">
+                    <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
+                      <span class="d-none d-md-block">Month</span>
+                      <span class="d-md-none">M</span>
+                    </a>
+                  </li>
+                  <li class="nav-item" data-toggle="chart" data-target="#chart-sales-dark" data-update='{"data":{"datasets":[{"data":[3.75, 8.75, 9.5, 0.25, 0.25, 0.25, 0.25, 0.25, 0.25]}]}}' data-prefix="$" data-suffix="k">
+                    <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
+                      <span class="d-none d-md-block">Week</span>
+                      <span class="d-md-none">W</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- Chart -->
+            <div class="chart">
+              <!-- Chart wrapper -->
+              <canvas id="chart-sales-dark" class="chart-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4">
+        <div class="card">
+          <div class="card-header bg-transparent">
+            <div class="row align-items-center">
+              <div class="col">
+                <h6 class="text-uppercase text-muted ls-1 mb-1">Rendimiento</h6>
+                <h5 class="h3 mb-0">Total de pedidos</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <!-- Chart -->
+            <div class="chart">
+              <canvas id="chart-bars" class="chart-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-8">
+        <div class="card">
+          <div class="card-header border-0">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="mb-0">Visitas de paginas</h3>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- Projects table -->
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Nombre de la pagina</th>
+                  <th scope="col">Visitantes</th>
+                  <th scope="col">Usuarios unicamente</th>
+                  <th scope="col">Bounce rate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    Tienda
+                  </th>
+                  <td>
+                    15
+                  </td>
+                  <td>
+                    15
+                  </td>
+                  <td>
+                    <i class="fas fa-arrow-down text-success mr-3"></i> 46,53%
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Pedidos
+                  </th>
+                  <td>
+                    10
+                  </td>
+                  <td>
+                    10
+                  </td>
+                  <td>
+                    <i class="fas fa-arrow-up text-warning mr-3"></i> 0%
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Login
+                  </th>
+                  <td>
+                    18
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    <i class="fas fa-arrow-up text-warning mr-3"></i> 100%
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Registro
+                  </th>
+                  <td>
+                    11
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    <i class="fas fa-arrow-down text-success mr-3"></i> 50,87%
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Verificación
+                  </th>
+                  <td>
+                    18
+                  </td>
+                  <td>
+                    0
+                  </td>
+                  <td>
+                    <i class="fas fa-arrow-down text-success mr-3"></i> 46,53%
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-4">
+          </div>
+    </div>
+
+    <footer class="footer pt-0">
+            <div class="row align-items-center justify-content-lg-between">
+              <div class="col-lg-6">
+                <div class="copyright text-center  text-lg-left  text-muted">
+                  &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Equipo Azul</a>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                  <li class="nav-item">
+                    <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Equipo Azul</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">Sobre nosotros</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">Licencia MIT</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+    </footer>
+</div>
+{% endblock %}

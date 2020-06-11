@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Nivel
+from .models import User, Nivel, Progreso
 from django.contrib.auth.admin import UserAdmin
 
 class UsuarioAdmin(UserAdmin):
@@ -7,11 +7,12 @@ class UsuarioAdmin(UserAdmin):
         ('Campos Extra', {
             'fields': (
                 'is_cafeteria',
-                'nivel',
-                'creditos'
+                'creditos',
+                'verification_code',
             )
         }),
     )
 
 admin.site.register(User, UsuarioAdmin)
 admin.site.register(Nivel)
+admin.site.register(Progreso)
