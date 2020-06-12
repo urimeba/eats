@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse
 from Apps.User.models import User, Progreso, Nivel
-from Apps.Tienda.models import Pedido, ProductosPedido
+from Apps.Tienda.models import Pedido, ProductosPedido, Producto
 from django.db.models import Count, Avg
 from django.utils import timezone
 from datetime import datetime, timedelta
@@ -271,7 +271,62 @@ def ventas(request):
     pedidos = Pedido.objects.filter(
         fecha__gte=timezone.now().replace(day=1, hour=0, minute=0, second=0, microsecond=0),
     )
-    # print(pedidos)
+
+    promedios = pedidos.aggregate(Avg('costoTotal'), Avg('pago'))
+    
+    estados = pedidos.values('estado').annotate(Count('estado'))
+    print(estados)
+
     return render(request, 'crm/ventas.html', {
-        'pedidos': pedidos
+        'pedidos': pedidos, 
+        'promedios':promedios,
+        'estados':estados
     })
+
+def usuarios(request):
+    usuarios = Progreso.objects.filter(
+        is_active=True
+    )
+
+    usuarios_nuevos = User.objects.filter(
+        is_cafeteria=False,
+        date_joined__gte= timezone.now().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+    ).count()
+
+    print(usuarios_nuevos)
+
+    return render(request, 'crm/usuarios.html', {
+        'usuarios':usuarios,
+        'usuarios_nuevos':usuarios_nuevos
+    })
+
+def productos(request):
+    productos = Producto.objects.filter(
+        is_activo=True
+    ).order_by('is_activo')
+    print(productos)
+    return render(request, 'crm/productos.html', {
+        'productos':productos
+    })
+
+def productosPedidos(request):
+    productos = ProductosPedido.objects.all()
+
+    mas_pedidos = productos.values('producto').annotate(Count('producto')).order_by('-producto__count')
+    producto_mas_vendido = Producto.objects.get(id=mas_pedidos[0]['producto'])
+
+    calificacion_mas_vendido = productos.filter(
+        producto=producto_mas_vendido
+    ).aggregate(Avg('calificacion'))
+
+    print(calificacion_mas_vendido)
+
+    return render(request, 'crm/productospedidos.html', {
+        'productos': productos,
+        'mas_pedidos':mas_pedidos,
+        'calificacion_mas_vendido':calificacion_mas_vendido,
+        'producto_mas_vendido':producto_mas_vendido
+    })
+
+def perfil(request):
+    return render(request, 'crm/profile.html')

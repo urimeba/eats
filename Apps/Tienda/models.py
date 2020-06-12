@@ -31,7 +31,8 @@ class Producto(models.Model):
 class ProductosPedido(models.Model):
     producto = models.ForeignKey('Producto', on_delete=models.CASCADE)
     pedido = models.ForeignKey('Pedido', on_delete=models.CASCADE)
-    calificacion = models.PositiveIntegerField(null=True, blank=True, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    calificacion = models.PositiveIntegerField(null=True, blank=True, default=1,
+    validators=[MinValueValidator(1), MaxValueValidator(5)])
 
 class Pedido(models.Model):
     ESTADOS = [

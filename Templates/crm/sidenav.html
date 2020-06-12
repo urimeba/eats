@@ -14,7 +14,7 @@
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
-  <link rel="stylesheet" href="{% static 'crm/assets/vendor/nucleo/css/nucleo.css ' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'crm/assets/vendor/nucleo/css/nucleo.css' %}" type="text/css">
   <link rel="stylesheet" href="{% static 'crm/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css' %}" type="text/css">
   <!-- Page plugins -->
   <!-- Argon CSS -->
@@ -66,6 +66,25 @@
                 <span class="nav-link-text">Ventas</span>
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'usuarios' %}">
+                <i class="ni ni-bullet-list-67 text-default"></i>
+                <span class="nav-link-text">Usuarios</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'productos' %}">
+                <i class="ni ni-bullet-list-67 text-default"></i>
+                <span class="nav-link-text">Productos</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'productospedidos' %}">
+                <i class="ni ni-bullet-list-67 text-default"></i>
+                <span class="nav-link-text">Productos pedidos</span>
+              </a>
+            </li>
+            
             <!-- <li class="nav-item">
               <a class="nav-link" href="examples/login.html">
                 <i class="ni ni-key-25 text-info"></i>
@@ -342,10 +361,10 @@
                 <div class="dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Bienvenido</h6>
                 </div>
-                <a href="#!" class="dropdown-item">
+                <!-- <a href="{% url 'perfil' %}" class="dropdown-item">
                   <i class="ni ni-single-02"></i>
                   <span>Mi perfil</span>
-                </a>
+                </a> -->
                 <div class="dropdown-divider"></div>
                 <a href="{% url 'logout' %}" class="dropdown-item">
                   <i class="ni ni-user-run"></i>

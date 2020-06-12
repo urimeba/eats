@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-Ventas
+Productos pedidos
 {% endblock %}
 
 
@@ -15,19 +15,15 @@ Ventas
         <div class="card">
           <!-- Card header -->
           <div class="card-header border-0">
-            <h3 class="mb-0">Reportes de ventas</h3>
+            <h3 class="mb-0">Reportes de productos pedidos</h3>
+            <p>Producto más pedido: {{producto_mas_vendido.nombre}} ({{mas_pedidos.0.producto__count}})</p>
+            <p>Costo más pedido: ${{producto_mas_vendido.costo}}</p>
+            <p>Calificacion mas pedido: {{calificacion_mas_vendido.calificacion__avg}}/5</p>
           </div>
 
           <div class="card-header border-0">
-            <h4 class="mb-0">Información del mes:</h4>
-            <p>Promedio de venta: ${{promedios.costoTotal__avg|floatformat:2 }}</p>
-            <p>Promedio de pago en efectivo: ${{promedios.pago__avg|floatformat:2 }}</p>
-            <p>Promedio de estados: 
-                {% for estado in estados %}
-                    <span>{{estado.estado}} - {{estado.estado__count}} / </span>
-                {% endfor %}
-
-            </p>
+            <h4 class="mb-0">Información de productos</h4>
+            <p></p>
           </div>
 
           <!-- Light table -->
@@ -35,54 +31,53 @@ Ventas
             <table class="table align-items-center table-flush">
               <thead class="thead-light">
                 <tr>
-                  <th scope="col" class="sort" data-sort="name">Fecha</th>
-                  <th scope="col" class="sort" data-sort="budget">Usuario</th>
-                  <th scope="col" class="sort" data-sort="status">Costo total</th>
-                  <th scope="col" class="sort" data-sort="completion">Efectivo</th>
-                  <th scope="col" class="sort" data-sort="completion">Estado final</th>
+                  <th scope="col" class="sort" data-sort="name">Producto</th>
+                  <th scope="col" class="sort" data-sort="budget">Calificación</th>
+                  <th scope="col" class="sort" data-sort="status">Usuario</th>
+                  <th scope="col" class="sort" data-sort="completion">Fecha</th>
+                  <th scope="col" class="sort" data-sort="completion">¿Se prepara?</th>
                 </tr>
               </thead>
               <tbody class="list" id="checkboxs">
-                <!-- ('AC', 'Activo'),
-                ('CO', 'Confirmado'),
-                ('CA', 'Cancelado'),
-                ('CM', 'Completado'), -->
-                {% for pedido in pedidos %}
-                    {% if pedido.get_estado_display == 'Activo' %}
+                {% for producto in productos %}
+                    {% if producto.producto.is_activo %}
                         <tr class="table-success">
-                    {% elif pedido.get_estado_display == 'Confirmado' %}
-                        <tr class="table-warning">
-                    {% elif pedido.get_estado_display == 'Cancelado' %}
+                    {% else %}
                         <tr class="table-danger">
-                    {% elif pedido.get_estado_display == 'Completado' %}
-                        <tr class="table-primary">
                     {% endif %}
                     <th scope="row">
                         <div class="media align-items-center">
                           <div class="media-body">
-                            <span class="name mb-0 text-sm">{{pedido.fecha}}</span>
+                            <span class="name mb-0 text-sm">{{producto.producto.nombre}}</span>
                           </div>
                         </div>
                       </th>
                     <td class="budget">
-                      {{pedido.usuario}}
+                      {{producto.calificacion}}/5
                     </td>
                     <td>
                       <span class="badge badge-dot mr-4">
                         <i class="bg-success"></i>
-                        <span class="status">${{pedido.costoTotal}}</span>
+                        <span class="status">{{producto.pedido.usuario.username}}</span>
                       </span>
                     </td>
                     <td>
                       <div class="d-flex align-items-center">
-                        <span class="completion mr-2">${{pedido.pago}}</span>
+                        <span class="completion mr-2">{{producto.pedido.fecha|date:"D d M Y"}}</span>
                         <div>
                         </div>
                       </div>
                     </td>
                     <td>
                       <div class="d-flex align-items-center">
-                        <span class="completion mr-2">{{pedido.get_estado_display}}</span>
+                        <span class="completion mr-2">
+                            {% if producto.producto.is_preparado %}
+                                Sí
+                            {% else %}
+                                No
+                            {% endif %}
+
+                        </span>
                         <div>
                         </div>
                       </div>
