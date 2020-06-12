@@ -1,0 +1,118 @@
+{% extends 'crm/sidenav.html' %}
+{% load static %}
+
+{% block title %}
+Ventas
+{% endblock %}
+
+
+
+{% block page %}
+
+<div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0">
+            <h3 class="mb-0">Reportes de ventas</h3>
+          </div>
+          <!-- Light table -->
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="name">Fecha</th>
+                  <th scope="col" class="sort" data-sort="budget">Usuario</th>
+                  <th scope="col" class="sort" data-sort="status">Costo total</th>
+                  <th scope="col" class="sort" data-sort="completion">Efectivo</th>
+                  <th scope="col" class="sort" data-sort="completion">Estado final</th>
+                </tr>
+              </thead>
+              <tbody class="list" id="checkboxs">
+                <!-- ('AC', 'Activo'),
+                ('CO', 'Confirmado'),
+                ('CA', 'Cancelado'),
+                ('CM', 'Completado'), -->
+                {% for pedido in pedidos %}
+                    {% if pedido.get_estado_display == 'Activo' %}
+                        <tr class="table-success">
+                    {% elif pedido.get_estado_display == 'Confirmado' %}
+                        <tr class="table-warning">
+                    {% elif pedido.get_estado_display == 'Cancelado' %}
+                        <tr class="table-danger">
+                    {% elif pedido.get_estado_display == 'Completado' %}
+                        <tr class="table-primary">
+                    {% endif %}
+                    <th scope="row">
+                        <div class="media align-items-center">
+                          <div class="media-body">
+                            <span class="name mb-0 text-sm">{{pedido.fecha}}</span>
+                          </div>
+                        </div>
+                      </th>
+                    <td class="budget">
+                      {{pedido.usuario}}
+                    </td>
+                    <td>
+                      <span class="badge badge-dot mr-4">
+                        <i class="bg-success"></i>
+                        <span class="status">${{pedido.costoTotal}}</span>
+                      </span>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="completion mr-2">${{pedido.pago}}</span>
+                        <div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="d-flex align-items-center">
+                        <span class="completion mr-2">{{pedido.get_estado_display}}</span>
+                        <div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                {% endfor %}
+
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer pt-0">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6">
+            <div class="copyright text-center  text-lg-left  text-muted">
+              &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Equipo Azul</a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Equipo Azul</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">Sobre nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">Licencia MIT</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </footer>
+
+</div>
+
+
+{% endblock %}
