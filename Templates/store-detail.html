@@ -80,21 +80,30 @@
 
         <h5 class=" productDetailDescription mt-2">{{producto.descripcion}} </h5>
 
-        <div class="row productInfo productPrice">
-            <div class="col pl-0">
-                <p align='left' style="font-weight: 400; font-size: 15px;">Costo: ${{producto.costo}}</p>
+        <div class="d-flex justify-content-between productInfo productDetailPrice">
+            <div class=" pl-0 d-flex">
+                <div class="icon icon-shape icon-shape-primary shadow rounded-circle mb-4">
+                    <i class="ni ni-money-coins"></i>
+                  </div>
+                <p class="productDetailPriceCost">Costo: ${{producto.costo}}</p>
             </div>
-            <div class="col">
-                <p style="font-weight: 400; font-size: 15px;">Días: {{producto.get_diaSemana_display}}</p>
+            <div class=" d-flex">
+                <div class="icon icon-shape icon-shape-primary shadow rounded-circle mb-4">
+                    <i class="ni ni-calendar-grid-58"></i>
+                  </div>
+                <p class="productDetailPriceCost">Días: {{producto.get_diaSemana_display}}</p>
             </div>
         </div>
-        <div class="d-flex productInfo">
-            <p class="productInputLabel">Agregar al carrito: </p>
-            <input class="productInput" id="input-{{producto.id}}" type='number' onkeydown="return false"
+        <div class="d-flex justify-content-center productDetailAdd">
+            <div class="icon icon-shape icon-shape-primary shadow rounded-circle mb-4">
+                <i class="ni ni-calendar-grid-58"></i>
+              </div>
+            <p class="productDetailInputLabel">Agregar al carrito: </p>
+            <input class="productDetailInput" id="input-{{producto.id}}" type='number' onkeydown="return false"
                 value='1' max='{{producto.unidades}}' min='0' data-precio="{{producto.costo}}">
         </div>
 
-        <button class="productInfo productBtn btn btn-primary" data-id='{{producto.id}}'
+        <button class="productInfo productDetailBtn btn btn-primary" data-id='{{producto.id}}'
             data-nombre='{{producto.nombre}}' onclick="agregarProducto(this)">
             Agregar
         </button>
