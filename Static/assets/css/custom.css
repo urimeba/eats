@@ -33,13 +33,26 @@ body{
     height: 100%;
 }
 
+.bgImgCustomerOrder{
+    background-position: center top!important;
+    background-image: url("../img/ill/pattern_pricing6.svg");
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    right: 0px;
+    top: 0;
+    background-repeat: no-repeat;
+    width: 100% !important;
+    height: 100%;
+}
+
 .prueba {
     font-size: 100px;
 }
 
 .menuLink {
     color: white;
-    
+    padding-left: 0px;
 }
 
 .productBody {
@@ -157,7 +170,7 @@ body{
     
     position: relative;
     left: 50%;
-    top: 2rem;
+    top: 3.5rem;
     display: block;
 transform: translateX(-50%);
 }
@@ -168,7 +181,7 @@ transform: translateX(-50%);
     left: 50%;
     transform: translateX(-50%);
     position: relative;
-    margin-top: 2rem;
+    margin-top: 3.5rem;
     display: block;
     -webkit-box-shadow: 0px 1px 10px -6px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 1px 10px -6px rgba(0, 0, 0, 0.75);
@@ -267,6 +280,21 @@ transform: translateX(-50%);
     background: rgb(182, 189, 231);
 }
 
+.customerOrderTitle{
+    position: relative;
+    display: block;
+    font-size: 64px;
+    left: 50% !important;
+    padding-top: 4.5rem;
+    width: fit-content;
+    color: #32325D;
+    transform: translateX(-50%) !important;
+   margin-bottom: 0px;
+   text-align: center;
+    
+}
+
+
 
 @media (max-width: 1024px){
 
@@ -315,6 +343,21 @@ transform: translateX(-50%);
         background: rgb(182, 189, 231);
         height: 36rem;
     }
+
+    .customerOrderTitle{
+        position: relative;
+        display: block;
+        font-size: 58px;
+        left: 50% !important;
+        padding-top: 4.5rem;
+        width: fit-content;
+        color: #32325D;
+        transform: translateX(-50%) !important;
+       margin-bottom: 0px;
+        
+    }
+
+    
     
     
     
@@ -323,20 +366,45 @@ transform: translateX(-50%);
 }
 
 @media (max-width: 768px){
+
+    .menuLink {
+        padding-left: 9px;
+        color: #32325D;
+    }
+
     .productDetailBackBtn{
         position: fixed;
         bottom: 20%;
         left: 2%;;
         z-index: 1;
     }
+    .customerOrderTitle{
+        position: relative;
+        display: block;
+        font-size: 54px;
+        left: 50% !important;
+        padding-top: 5rem;
+        width: fit-content;
+        color: #32325D;
+        transform: translateX(-50%) !important;
+       margin-bottom: 0px;
+        
+    }
 }
 
 @media (max-width: 480px){
+
+    
 
     .bgImgStoreDetail{
         
         width: 100% !important;
         height: 50%;
+    }
+
+    .menuLink {
+        padding-left: 9px;
+        color: #32325D;
     }
 
     .productBody {
@@ -458,6 +526,19 @@ transform: translateX(-50%);
         bottom: 3%;
         left: 2%;;
         z-index: 1;
+    }
+
+    .customerOrderTitle{
+        position: relative;
+        display: block;
+        font-size: 34px;
+        left: 50% !important;
+        padding-top: 5rem;
+        width: fit-content;
+        color: #32325D;
+        transform: translateX(-50%) !important;
+       margin-bottom: 0px;
+        
     }
 
 }
