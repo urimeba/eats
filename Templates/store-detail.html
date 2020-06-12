@@ -1,20 +1,183 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inicio de sesion</title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="{% static '/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+    <link href="{% static '/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link href=" {% static '/assets/css/font-awesome.css' %}  " rel="stylesheet" />
+    <link href=" {% static '/assets/css/nucleo-svg.css' %}  " rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
+    <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
+    <!-- JS files -->
+    <script src="{% static 'js/funcionesUriel.js' %}"></script>
 </head>
-<body>
-    Vista del producto mas detallada
 
-    <p>{{ producto.nombre }}</p>
+<body>
+    <nav id="navbar-main" style="position: fixed;"
+        class="navbar navbar-main navbar-expand-lg navbar-dark bg-primary headroom">
+        <div class="container">
+            <a class="navbar-brand mr-lg-5" href="index.html">
+                <img src="./assets/img/brand/white.png">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="index.html">
+                                <img src="./assets/img/brand/blue.png">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+                    <li class="nav-item dropdown pr-4  ">
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
+
+                    </li>
+                    <li class="nav-item dropdown ">
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="{{producto.id}}" class="container-fluid h-auto">
+        <div class="bgImgStoreDetail"></div>
+        Vista del producto mas detallada
+        <h2 align="center" class="productDetailName">{{ producto.nombre }}</h2>
+
+        <img class="productDetailImage" src="{{producto.imagen.url}}" alt="">
+
+        <h5 class=" productDetailDescription mt-2">{{producto.descripcion}} </h5>
+
+        <div class="d-flex justify-content-between productInfo productDetailPrice">
+            <div class=" pl-0 d-flex">
+                <div class="icon icon-shape icon-shape-primary shadow rounded-circle mb-4">
+                    <i class="ni ni-money-coins"></i>
+                  </div>
+                <p class="productDetailPriceCost">Costo: ${{producto.costo}}</p>
+            </div>
+            <div class=" d-flex">
+                <div class="icon icon-shape icon-shape-primary shadow rounded-circle mb-4">
+                    <i class="ni ni-calendar-grid-58"></i>
+                  </div>
+                <p class="productDetailPriceCost">Días: {{producto.get_diaSemana_display}}</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center productDetailAdd">
+            <div class="icon icon-shape icon-shape-primary shadow rounded-circle mb-4">
+                <i class="ni ni-calendar-grid-58"></i>
+              </div>
+            <p class="productDetailInputLabel">Agregar al carrito: </p>
+            <input class="productDetailInput" id="input-{{producto.id}}" type='number' onkeydown="return false"
+                value='1' max='{{producto.unidades}}' min='0' data-precio="{{producto.costo}}">
+        </div>
+
+        <button class="productInfo productDetailBtn btn btn-primary" data-id='{{producto.id}}'
+            data-nombre='{{producto.nombre}}' onclick="agregarProducto(this)">
+            Agregar
+        </button>
+
+
+
+
+
+
+    </div>
 
     <a href="{% url 'store' %}">
-        <button>
-            Regresar al menu
+        <button class="btn btn-danger btn-round productDetailBackBtn">
+            <i class="ni ni-bold-left"></i> Volver al menu
         </button>
     </a>
-    
+
+
+
+    <footer class="footerStore d-block">
+        <div class="container">
+            <div class="row row-grid align-items-center mb-5">
+                <div class="col-lg-6">
+                    <h3 class="text-primary font-weight-light mb-2 pt-5">¡Gracias por tu preferencia!</h3>
+                    <h4 class="mb-0 font-weight-light">En UAQeats nos seguiremos esforzando para darte el mejor
+                        servicio.</h4>
+                </div>
+                <div class="col-lg-6 text-lg-center btn-wrapper">
+                    <button target="_blank" href="https://twitter.com/creativetim" rel="nofollow"
+                        class="btn btn-icon-only btn-twitter rounded-circle" data-toggle="tooltip"
+                        data-original-title="Follow us">
+                        <span class="btn-inner--icon"><i class="fa fa-twitter"></i></span>
+                    </button>
+                    <button target="_blank" href="https://www.facebook.com/CreativeTim/" rel="nofollow"
+                        class="btn-icon-only rounded-circle btn btn-facebook" data-toggle="tooltip"
+                        data-original-title="Like us">
+                        <span class="btn-inner--icon"><i class="fab fa-facebook"></i></span>
+                    </button>
+                    <button target="_blank" href="https://dribbble.com/creativetim" rel="nofollow"
+                        class="btn btn-icon-only btn-dribbble rounded-circle" data-toggle="tooltip"
+                        data-original-title="Follow us">
+                        <span class="btn-inner--icon"><i class="fa fa-dribbble"></i></span>
+                    </button>
+                    <button target="_blank" href="https://github.com/creativetimofficial" rel="nofollow"
+                        class="btn btn-icon-only btn-github rounded-circle" data-toggle="tooltip"
+                        data-original-title="Star on Github">
+                        <span class="btn-inner--icon"><i class="fa fa-github"></i></span>
+                    </button>
+                </div>
+            </div>
+            <hr>
+            <div class="row align-items-center justify-content-md-between">
+                <div class="col-md-6">
+                    <div class="copyright">
+                        &copy; 2020 <a href="" target="_blank">UAQEats</a>.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav nav-footer justify-content-end">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--   Core JS Files   -->
+    <script src="{% static '/assets/js/core/jquery.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/assets/js/core/popper.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/assets/js/core/bootstrap.min.js' %} " type="text/javascript"></script>
+    <script src="{% static '/assets/js/plugins/perfect-scrollbar.jquery.min.js' %} " type="text/javascript"></script>
+    <!-- Template Scripts -->
+    <script src="{% static '/assets/js/argon-design-system.js' %} " type="text/javascript"></script>
+
 </body>
+
 </html>

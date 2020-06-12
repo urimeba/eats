@@ -19,8 +19,6 @@
     <!-- CSS Files -->
     <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
     <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
-    <!-- JS files -->
-    <script src="{% static 'js/funcionesUriel.js' %}"></script>
 </head>
 
 <body>
@@ -118,7 +116,7 @@
                     <div class="col pl-0">
                         <p align='left' style="font-weight: 400; font-size: 15px;">Costo: ${{producto.costo}}</p>
                     </div>
-                    <div class="col">
+                    <div class="col pl-0">
                         <p style="font-weight: 400; font-size: 15px;">Días: {{producto.get_diaSemana_display}}</p>
                     </div>
                 </div>
