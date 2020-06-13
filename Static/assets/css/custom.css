@@ -291,7 +291,19 @@ transform: translateX(-50%);
     transform: translateX(-50%) !important;
    margin-bottom: 0px;
    text-align: center;
+   
     
+}
+
+.smsInputSearch{
+    margin-top: 4px;
+    border: #A9ECD0 2px solid;
+    border-radius: 10px;
+    width: 73%;
+    
+    margin-bottom: 10px;
+    height: 42px; 
+   line-height: 15px;
 }
 
 
