@@ -108,7 +108,7 @@
         <div class="d-flex flex-wrap justify-content-center">
             {% for producto in productos %}
             <div id="{{producto.id}}" class="productBody">
-                <img class="productImage" src="{{producto.imagen.url}}" alt="">
+                <img class="productImage" src="{{producto.imagen}}" alt="">
                 <a href="{% url 'store-detail' producto.pk %}">
                     <h3 class="productName"> {{producto.nombre}}</h3>
                 </a>

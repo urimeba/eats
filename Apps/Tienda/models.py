@@ -25,7 +25,7 @@ class Producto(models.Model):
     )
     is_preparado = models.BooleanField()
     is_activo = models.BooleanField(default=True)
-    imagen = models.ImageField(upload_to=nombre_imagen, max_length=100)
+    imagen = models.CharField(max_length=500, null=False, blank=False)
     diaSemana = models.CharField(max_length=3, null=True, blank=True, choices=DIAS)
 
 class ProductosPedido(models.Model):
