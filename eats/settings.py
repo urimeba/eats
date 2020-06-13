@@ -75,17 +75,18 @@ WSGI_APPLICATION = 'eats.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        # CHANGING THE DATABASE SETTINGS
-        'ENGINE': 'django.db.backends.mysql', 
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'NAME': 'eats',
-        'USER': 'root',
-        'PASSWORD': '',
-    }
-}
+
+# DATABASES = {
+#     'default': {
+#         # CHANGING THE DATABASE SETTINGS
+#         'ENGINE': 'django.db.backends.mysql', 
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'NAME': 'eats',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#     }
+# }
 
 
 # Password validation
