@@ -299,11 +299,19 @@ transform: translateX(-50%);
     margin-top: 4px;
     border: #A9ECD0 2px solid;
     border-radius: 10px;
-    width: 73%;
-    
+    width: 50%;
     margin-bottom: 10px;
-    height: 42px; 
+    height: 50px; 
    line-height: 15px;
+   position: relative;
+   
+}
+
+.btnSms{
+    margin-bottom: 0px;
+    position: relative;
+    transform: translateY(-30px);
+    
 }
 
 
@@ -369,7 +377,24 @@ transform: translateX(-50%);
         
     }
 
+    .smsInputSearch{
+        margin-top: 4px;
+        border: #A9ECD0 2px solid;
+        border-radius: 10px;
+        width: 66%;
+        margin-bottom: 10px;
+        height: 60px; 
+       line-height: 15px;
+       position: relative;
+       
+    }
     
+    .btnSms{
+        margin-bottom: 0px;
+        position: relative;
+        transform: translateY(-34px);
+        
+    }
     
     
     
@@ -406,7 +431,28 @@ transform: translateX(-50%);
 
 @media (max-width: 480px){
 
+    .smsInputSearch{
+        margin-top: 4px;
+        border: #A9ECD0 2px solid;
+        border-radius: 10px;
+        width: 90%;
+        margin-bottom: 10px;
+        height: 90px; 
+       line-height: 15px;
+       position: relative;
+       left: 50%;
+       transform: translateX(-50%);
+       
+    }
     
+    .btnSms{
+        margin-bottom: 0px;
+        position: relative;
+        transform: translateY(0px);
+        left: 50%;
+        transform: translateX(-80px);
+        
+    }
 
     .bgImgStoreDetail{
         
