@@ -19,6 +19,7 @@ from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
+from . import settings
 
 
 urlpatterns = [
@@ -26,7 +27,7 @@ urlpatterns = [
     path('', include('Apps.User.urls')),
     path('store/', include('Apps.Tienda.urls')),
     path('crm/', include('Apps.crm.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # if settings.DEBUG:
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
