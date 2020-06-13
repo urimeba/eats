@@ -73,9 +73,9 @@
                             
                         </div>
                     </div>
-
+                    <!--   Móvil  -->
                     <div class="d-block d-md-none">
-                                                <form action="{% url 'verification' %}" method="POST" role="form">
+                            <form action="{% url 'verification' %}" method="POST" role="form">
 
                             <h2>Verificación</h2>
                             {% csrf_token %}
@@ -95,12 +95,15 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                         </div>
-                                        {{ form.verification_code | addClassAndPlaceH:'form-control,Código de confirmación'}}
+                                        {{ form.verification_code | addClassAndPlaceH:'form-control,Código'}}
                                         
                                     </div>
                                 </div>
                             <input class= "btn btn-primary mt-2" type="submit" name "Verificacion" id="btn-verificar"value="Verificar mi cuenta">
+                            <hr>
+                            <a href="{% url 'login' %}" class="btn btn-success btn-sm" id="signIn">Iniciar Sesión</a>                        
                         </form>
+
                     </div>
 
                 </div>                       
