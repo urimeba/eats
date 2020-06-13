@@ -35,7 +35,8 @@ def crm(request):
         estado = 'CM'
     ).count()
 
-    porcentaje_ventas = (nuevos_pedidos * 100) / older_pedidos
+    if older_pedidos>0:
+        porcentaje_ventas = (nuevos_pedidos * 100) / older_pedidos
 
     # FORMULACION DE PORCENTAJE DE COSTOS
     promedio_nuevas_ventas = Pedido.objects.filter(
