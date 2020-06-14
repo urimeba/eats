@@ -18,7 +18,7 @@ Productos pedidos
             <h3 class="mb-0">Reportes de productos pedidos</h3>
             <p>Producto más pedido: {{producto_mas_vendido.nombre}} ({{mas_pedidos.0.producto__count}})</p>
             <p>Costo más pedido: ${{producto_mas_vendido.costo}}</p>
-            <p>Calificacion mas pedido: {{calificacion_mas_vendido.calificacion__avg}}/5</p>
+            <p>Calificacion mas pedido: {{calificacion_mas_vendido.calificacion__avg|floatformat:2}}/5</p>
           </div>
 
           <div class="card-header border-0">
