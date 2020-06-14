@@ -24,10 +24,11 @@
 </head>
 
 <body>
-    <nav id="navbar-main" style="position: fixed;" class="navbar navbar-main navbar-expand-lg navbar-dark bg-primary headroom">
+    <nav id="navbar-main" style="position: fixed;"
+        class="navbar navbar-main navbar-expand-lg navbar-dark bg-primary headroom">
         <div class="container">
-            <a class="navbar-brand mr-lg-5" href="{% url 'store' %}">
-                <img src="{% static 'assets/img/icons/uaq.png' %}">
+            <a class="navbar-brand mr-lg-5" href="index.html">
+                <img src="./assets/img/brand/white.png">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
                 aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,8 +38,8 @@
                 <div class="navbar-collapse-header">
                     <div class="row">
                         <div class="col-6 collapse-brand">
-                            <a href="{% url 'store' %}">
-                              <img src="{% static 'assets/img/icons/uaq.png' %}">
+                            <a href="index.html">
+                                <img src="./assets/img/brand/blue.png">
                             </a>
                         </div>
                         <div class="col-6 collapse-close">
@@ -51,33 +52,20 @@
                         </div>
                     </div>
                 </div>
-                <ul style="line-height:3rem; " class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
-                    <li class="nav-item dropdown pr-4">
-    
-                        <i class="ni ni-cart d-lg-none"></i>
-                        <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
-    
-                    </li>
-                    <li class="nav-item dropdown pr-4 ">
-    
-                        <i class="ni ni-collection d-lg-none"></i>
-                        <a class="nav-link-inner--text menuLink" href="{% url 'pedidos_cliente' %}">Mis pedidos</a>
-    
-                    </li>
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
                     <li class="nav-item dropdown pr-4  ">
-    
-                        <i class="ni ni-circle-08 d-lg-none"></i>
-                        <a class="text-black nav-link-inner--text menuLink" href="{% url 'profile' %}">Mi perfil</a>
-    
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
+
                     </li>
-                    <li class="nav-item dropdown  ">
-    
-                        <i class="ni ni-button-power d-lg-none"></i>
+                    <li class="nav-item dropdown ">
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
                         <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
-    
+
                     </li>
-                    
-    
+
                 </ul>
             </div>
         </div>

@@ -17,7 +17,6 @@ class User(AbstractUser):
 class Progreso(models.Model):
     ESTADOS = [
         ('P', 'EN PROGRESO'),
-        ('L', 'LISTO'),
         ('C', 'COBRADO'),
     ]
 

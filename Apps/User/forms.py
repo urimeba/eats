@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, Nivel, Progreso
+from .models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login
 from twilio.rest import Client
@@ -107,7 +107,7 @@ class SignupForm(UserCreationForm):
         try:
             # Twilio data
             account_sid = 'AC5770f9d44bc5f3ad36f3839537c832db'
-            auth_token = '06244b8056898bd0cb4d549400c0ffd9'
+            auth_token = 'a567971aea345c46156e9f7a54ffee33'
             client = Client(account_sid, auth_token)
 
             # Sending SMS to user, so he can activate his account
@@ -127,17 +127,6 @@ class SignupForm(UserCreationForm):
         user.verification_code = self.codigo
         if commit:
             user.save()
-
-        nivel = Nivel.objects.get(nombre="Plata")
-        progresoUsuario = Progreso(
-            user=user,
-            nivel=nivel,
-            estado='P',
-            is_active=True
-        )
-        progresoUsuario.save()
-
-
         return user
 
 class VerificationForm(forms.Form):
