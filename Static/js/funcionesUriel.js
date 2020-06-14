@@ -261,7 +261,7 @@ pagar = () => {
 
         alert("Tu pedido ha sido creado. Seras redireccionado a tus pedidos");
         localStorage.setItem('pedidos', '{}');
-        window.location='http://127.0.0.1:8000/store/pedidos';
+        window.location='https://uaqeats.herokuapp.com/store/pedidos';
     }
 
 
