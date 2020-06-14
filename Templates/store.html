@@ -26,7 +26,11 @@
     <nav id="navbar-main" style="position: fixed;" class="navbar navbar-main navbar-expand-lg navbar-dark bg-primary headroom">
         <div class="container">
             <a class="navbar-brand mr-lg-5" href="index.html">
+<<<<<<< HEAD
                 <img src="./assets/img/brand/white.png">
+=======
+                <img src="{% static 'assets/img/icons/uaq.png' %}">
+>>>>>>> parent of e1a2d58... pedidos listo y navbar fixed
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
                 aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,6 +56,11 @@
                 </div>
                 <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
                     <li class="nav-item dropdown pr-4  ">
+<<<<<<< HEAD
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
+=======
 
                         <i class="ni ni-ui-04 d-lg-none"></i>
                         <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
@@ -60,10 +69,31 @@
                     <li class="nav-item dropdown ">
 
                         <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'pedidos_cliente' %}">Mis pedidos</a>
+>>>>>>> parent of e1a2d58... pedidos listo y navbar fixed
+
+                    </li>
+                    <li class="nav-item dropdown ">
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+<<<<<<< HEAD
                         <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
 
                     </li>
 
+=======
+                        <a class="nav-link-inner--text menuLink" href="{% url 'profile' %}">Mi perfil</a>
+
+                    </li>
+                    <li class="nav-item dropdown ">
+
+                        <i class="ni ni-ui-04 d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
+
+                    </li>
+                    
+
+>>>>>>> parent of e1a2d58... pedidos listo y navbar fixed
                 </ul>
             </div>
         </div>

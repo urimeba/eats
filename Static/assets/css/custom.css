@@ -267,6 +267,7 @@ transform: translateX(-50%);
     background: rgb(182, 189, 231);
 }
 
+<<<<<<< HEAD
 .customerOrderTitle{
     position: relative;
     display: block;
@@ -302,6 +303,8 @@ transform: translateX(-50%);
 }
 
 
+=======
+>>>>>>> parent of e1a2d58... pedidos listo y navbar fixed
 
 @media (max-width: 1024px){
 
@@ -350,6 +353,7 @@ transform: translateX(-50%);
         background: rgb(182, 189, 231);
         height: 36rem;
     }
+<<<<<<< HEAD
 
     .customerOrderTitle{
         position: relative;
@@ -382,6 +386,9 @@ transform: translateX(-50%);
         transform: translateY(-34px);
         
     }
+=======
+    
+>>>>>>> parent of e1a2d58... pedidos listo y navbar fixed
     
     
     
@@ -399,6 +406,7 @@ transform: translateX(-50%);
 
 @media (max-width: 480px){
 
+<<<<<<< HEAD
     .smsInputSearch{
         margin-top: 4px;
         border: #A9ECD0 2px solid;
@@ -422,6 +430,8 @@ transform: translateX(-50%);
         
     }
 
+=======
+>>>>>>> parent of e1a2d58... pedidos listo y navbar fixed
     .bgImgStoreDetail{
         
         width: 100% !important;
