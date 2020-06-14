@@ -23,7 +23,7 @@
 <body class="register-page">
 
 
-  
+
   <div class="wrapper">
     <div class="page-header bg-default">
 
@@ -32,13 +32,6 @@
         
         <div class="d-none d-md-block form-container sign-in-container">
           <form action="{% url 'login' %}" method="POST" role="form">
-
-            {% if form.errors %}
-  <div id="loginAlertError" class="alertError">
-    <strong class="alertErrorTextLogin">Tu usuario y contraseña no coinciden. Intenta nuevamente</strong>
-    <button class="btn btn-warning btn-md" id="loginAlertErrorBtn">Intentarlo de nuevo</button>
-  </div>
-  {% endif %}
 
             <h2>Iniciar Sesión</h2>
 
@@ -57,7 +50,9 @@
                   </ul>
                   {% endif %}
 
-                  
+                  {% if form.errors %}
+                    <strong style="color: red">Tu usuario y contraseña no coinciden. Intenta nuevamente</strong>
+                  {% endif %}
                 </div>
                 {% csrf_token %}
                   <!-- SI NO SE INGRESA CORRECTAMENTE EL USUARIO O CONTRASEÑA -->
@@ -116,10 +111,7 @@
                   {% endif %}
 
                   {% if form.errors %}
-                  <div class="alertError">
                     <strong style="color: red">Tu usuario y contraseña no coinciden. Intenta nuevamente</strong>
-                  </div>
-                    
                   {% endif %}
                 </div>
                 {% csrf_token %}
