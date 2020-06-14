@@ -314,6 +314,43 @@ transform: translateX(-50%);
     
 }
 
+.alertError{
+    position: absolute;
+
+    width: 90%;
+    height: 300px;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    -webkit-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+   
+    z-index: 2;
+    
+}
+
+.alertErrorTextLogin{
+    color: red;
+    font-size: 20px;
+    top: 50%;
+    
+    transform: translateY(-50%);
+    display: block;
+    position: relative;
+    
+}
+
+#loginAlertErrorBtn{
+   top: 60%;
+   left: 50%;
+    transform: translateX(-50%);
+    
+    display: block;
+    position: relative;
+}
+
 
 
 @media (max-width: 1024px){
