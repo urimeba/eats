@@ -1,3 +1,6 @@
+// var server = "https://uaqeats.herokuapp.com"
+var server = "127.0.0.1:8000"
+
 // Funcion para obtener la Cookie y mandarla al Back
 function getCookie(name) {
     var cookieValue = null;
@@ -13,7 +16,6 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-
 
 
 initCarrito = () => {
@@ -237,7 +239,7 @@ pagar = () => {
     }else{
 
         // AQUI DEBERIA IR EL AJAX PARA CREAR EL PEDIDO EN LA BASE DE DATOS
-        fetch("https://uaqeats.herokuapp.com/store/crearPedido", {
+        fetch("/store/crearPedido", {
         method: "POST",
         headers: {
             "X-CSRFToken": getCookie("csrftoken"),
@@ -261,7 +263,7 @@ pagar = () => {
 
         alert("Tu pedido ha sido creado. Seras redireccionado a tus pedidos");
         localStorage.setItem('pedidos', '{}');
-        window.location='https://uaqeats.herokuapp.com/store/pedidos';
+        window.location='/store/pedidos';
     }
 
 

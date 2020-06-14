@@ -62,6 +62,6 @@ class Pedido(models.Model):
         return "Pedido #{0} por {1} el {2}".format(
             self.id, 
             self.usuario.username, 
-            self.fecha.strftime("%d/%m a las %H:%M")
+            self.fecha
         )
 
