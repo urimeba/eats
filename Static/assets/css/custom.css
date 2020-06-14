@@ -267,6 +267,41 @@ transform: translateX(-50%);
     background: rgb(182, 189, 231);
 }
 
+.customerOrderTitle{
+    position: relative;
+    display: block;
+    font-size: 64px;
+    left: 50% !important;
+    padding-top: 4.5rem;
+    width: fit-content;
+    color: #32325D;
+    transform: translateX(-50%) !important;
+   margin-bottom: 0px;
+   text-align: center;
+   
+    
+}
+
+.smsInputSearch{
+    margin-top: 4px;
+    border: #A9ECD0 2px solid;
+    border-radius: 10px;
+    width: 50%;
+    margin-bottom: 10px;
+    height: 50px; 
+   line-height: 15px;
+   position: relative;
+   
+}
+
+.btnSms{
+    margin-bottom: 0px;
+    position: relative;
+    transform: translateY(-30px);
+    
+}
+
+
 
 @media (max-width: 1024px){
 
@@ -315,7 +350,38 @@ transform: translateX(-50%);
         background: rgb(182, 189, 231);
         height: 36rem;
     }
+
+    .customerOrderTitle{
+        position: relative;
+        display: block;
+        font-size: 58px;
+        left: 50% !important;
+        padding-top: 4.5rem;
+        width: fit-content;
+        color: #32325D;
+        transform: translateX(-50%) !important;
+       margin-bottom: 0px;
+        
+    }
+
+    .smsInputSearch{
+        margin-top: 4px;
+        border: #A9ECD0 2px solid;
+        border-radius: 10px;
+        width: 66%;
+        margin-bottom: 10px;
+        height: 60px; 
+       line-height: 15px;
+       position: relative;
+       
+    }
     
+    .btnSms{
+        margin-bottom: 0px;
+        position: relative;
+        transform: translateY(-34px);
+        
+    }
     
     
     
@@ -332,6 +398,29 @@ transform: translateX(-50%);
 }
 
 @media (max-width: 480px){
+
+    .smsInputSearch{
+        margin-top: 4px;
+        border: #A9ECD0 2px solid;
+        border-radius: 10px;
+        width: 90%;
+        margin-bottom: 10px;
+        height: 90px; 
+       line-height: 15px;
+       position: relative;
+       left: 50%;
+       transform: translateX(-50%);
+       
+    }
+    
+    .btnSms{
+        margin-bottom: 0px;
+        position: relative;
+        transform: translateY(0px);
+        left: 50%;
+        transform: translateX(-80px);
+        
+    }
 
     .bgImgStoreDetail{
         
