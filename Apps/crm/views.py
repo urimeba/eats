@@ -50,10 +50,12 @@ def crm(request):
         estado = 'CM'
     ).values('id').aggregate(Avg('costoTotal'))
 
-    promedio_nuevas_ventas = round(promedio_nuevas_ventas['costoTotal__avg'], 2)
-    promedio_older_ventas = round(promedio_older_ventas['costoTotal__avg'], 2)
     print(promedio_nuevas_ventas)
     print(promedio_older_ventas)
+
+    promedio_nuevas_ventas = round(promedio_nuevas_ventas['costoTotal__avg'], 2)
+    promedio_older_ventas = round(promedio_older_ventas['costoTotal__avg'], 2)
+    
 
     porcentaje_promedio_ventas = (promedio_nuevas_ventas * 100) / promedio_older_ventas
     porcentaje_promedio_ventas = round(porcentaje_promedio_ventas, 2)
@@ -288,6 +290,7 @@ def usuarios(request):
     usuarios = Progreso.objects.filter(
         is_active=True
     )
+    print(usuarios)
 
     usuarios_nuevos = User.objects.filter(
         is_cafeteria=False,

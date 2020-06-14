@@ -120,7 +120,7 @@ SMS
                     </td>
                     <td>
                       <div class="d-flex align-items-center">
-                        <span class="completion mr-2">{{value.porcentaje}}%</span>
+                        <span class="completion mr-2">{{value.porcentaje|floatformat:2}}%</span>
                         <div>
                           <div class="progress">
                             <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="{{value.porcentaje}}" aria-valuemin="0" aria-valuemax="100" style="width: {{value.porcentaje}}%;"></div>

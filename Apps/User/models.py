@@ -26,10 +26,20 @@ class Progreso(models.Model):
     estado = models.CharField(max_length=1, default='P', choices=ESTADOS)
     is_active = models.BooleanField(null=False, blank=False)
 
+    def __str__(self):
+        return "{0} - {1} - {2}".format(
+            self.user,
+            self.nivel,
+            self.get_estado_display()
+        )
+
 class Nivel(models.Model):
     nombre = models.CharField(max_length=50, null=False, blank=False)
     descripcion = models.CharField(max_length=500, null=False, blank=False)
     noComidas = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(50)])
     noProductos = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(50)])
     beneficios = models.CharField(max_length=500, null=False, blank=False)
+
+    def __str__(self):
+        return self.nombre
     
