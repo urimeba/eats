@@ -237,7 +237,7 @@ pagar = () => {
     }else{
 
         // AQUI DEBERIA IR EL AJAX PARA CREAR EL PEDIDO EN LA BASE DE DATOS
-        fetch("http://127.0.0.1:8000/store/crearPedido", {
+        fetch("https://uaqeats.herokuapp.com/store/crearPedido", {
         method: "POST",
         headers: {
             "X-CSRFToken": getCookie("csrftoken"),
