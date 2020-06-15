@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login
 from twilio.rest import Client
 import random
-
+import os
 
 def random_string():
     return random.randrange(100000, 999999)
@@ -106,9 +106,12 @@ class SignupForm(UserCreationForm):
         data = self.cleaned_data['username']
         try:
             # Twilio data
-            account_sid = 'AC5770f9d44bc5f3ad36f3839537c832db'
-            auth_token = '06244b8056898bd0cb4d549400c0ffd9'
+            print("-HEEEEEEEEEEEEY")
+            print(os.environ['TWILIO_ACCOUNT_SID'])
+            account_sid = os.environ['TWILIO_ACCOUNT_SID']
+            auth_token = os.environ['TWILIO_AUTH_TOKEN']
             client = Client(account_sid, auth_token)
+            
 
             # Sending SMS to user, so he can activate his account
             message = client.messages.create(

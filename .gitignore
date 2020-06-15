@@ -191,3 +191,4 @@ $RECYCLE.BIN/
 .vscode/
 
 Apps/crm/migrations/
+twilio.env
