@@ -1,7 +1,7 @@
-{% load static %}
-{% load myfilters %}
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
+    {% load myfilters %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,81 +25,84 @@
     
 
     <nav id="navbar-main" style="position: fixed;" class="navbar navbar-main navbar-expand-lg navbar-dark bg-primary headroom">
-            <div class="container">
-                <a class="navbar-brand mr-lg-5" href="{% url 'store' %}">
-                    <img src="{% static 'assets/img/icons/uaq.png' %}">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
-                    aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse" id="navbar_global">
-                    <div class="navbar-collapse-header">
-                        <div class="row">
-                            <div class="col-6 collapse-brand">
-                                <a href="{% url 'store' %}">
-                                <img src="{% static 'assets/img/icons/uaq.png' %}">
-                                </a>
-                            </div>
-                            <div class="col-6 collapse-close">
-                                <button type="button" class="navbar-toggler" data-toggle="collapse"
-                                    data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
-                                    aria-label="Toggle navigation">
-                                    <span></span>
-                                    <span></span>
-                                </button>
-                            </div>
+        <div class="container">
+            <a class="navbar-brand mr-lg-5" href="{% url 'store' %}">
+                <img src="{% static 'assets/img/icons/uaq.png' %}">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="{% url 'store' %}">
+                              <img src="{% static 'assets/img/icons/uaq.png' %}">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                            </button>
                         </div>
                     </div>
-                    <ul style="line-height:3rem; " class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
-                        <li class="nav-item dropdown pr-4">
-        
-                            <i class="ni ni-cart d-lg-none"></i>
-                            <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
-        
-                        </li>
-                        <li class="nav-item dropdown pr-4 ">
-        
-                            <i class="ni ni-collection d-lg-none"></i>
-                            <a class="nav-link-inner--text menuLink" href="{% url 'pedidos_cliente' %}">Mis pedidos</a>
-        
-                        </li>
-                        <li class="nav-item dropdown pr-4  ">
-        
-                            <i class="ni ni-circle-08 d-lg-none"></i>
-                            <a class="text-black nav-link-inner--text menuLink" href="{% url 'profile' %}">Mi perfil</a>
-        
-                        </li>
-                        <li class="nav-item dropdown  ">
-        
-                            <i class="ni ni-button-power d-lg-none"></i>
-                            <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
-        
-                        </li>
-                        
-        
-                    </ul>
                 </div>
+                <ul style="line-height:3rem; " class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+                    <li class="nav-item dropdown pr-4">
+    
+                        <i class="ni ni-cart d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
+    
+                    </li>
+                    <li class="nav-item dropdown pr-4 ">
+    
+                        <i class="ni ni-collection d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'pedidos_cliente' %}">Mis pedidos</a>
+    
+                    </li>
+                    <li class="nav-item dropdown pr-4  ">
+    
+                        <i class="ni ni-circle-08 d-lg-none"></i>
+                        <a class="text-black nav-link-inner--text menuLink" href="{% url 'profile' %}">Mi perfil</a>
+    
+                    </li>
+                    <li class="nav-item dropdown  ">
+    
+                        <i class="ni ni-button-power d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
+    
+                    </li>
+                    
+    
+                </ul>
             </div>
+        </div>
     </nav>
-        <h1 class="customerOrderTitle">Mis Datos</h1>
 
+
+    
+        
+        
         <!-- WEB-->
         
         <div class=" container" id="container">
-
+            <h1 class="customerOrderTitle ">Mis Datos</h1>
         
             <div class="d-none d-md-block form-container sign-in-container">
                 <div class="card card-pricing  border-0 text-left mb-4 mr-4 ml-4">
                 
                     <div class="card-header bg-transparent">
                         <hr>
-                       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS09nSSOV3sEiGgOJW0F7L_LVK44If07LuLmh5J50YUdNl0cQlh&usqp=CAU" Width="150" height="150">
-                        <ul class="list-unstyled my-4">
+                       <img class="centerRelative" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS09nSSOV3sEiGgOJW0F7L_LVK44If07LuLmh5J50YUdNl0cQlh&usqp=CAU" Width="150" height="150">
+                        <ul class="list-unstyled my-4 centerRelative pr-5" style="width: 290px;" >
                         <li>
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <span class="pl-1 text-sm text-blue pt-3"><b>Teléfono:</b> </span>{{request.user.username}}
+                                    <span class=" pl-1 text-sm text-blue pt-3"><b>Teléfono:</b> </span>{{request.user.username}}
                                 </div>
                             </div>
                         </li>
@@ -151,7 +154,7 @@
                     </ul>
                   
 
-                        <a href="{% url 'password' %}"> <button class= "btn btn-primary mt-2 pt-2" >Cambiar contraseña</button> </a>
+                        <a href="{% url 'password' %}"> <button class= "centerRelative btn btn-warning mt-2 pt-2" >Cambiar contraseña</button> </a>
                         <hr>
                     </div>
                 </div>        

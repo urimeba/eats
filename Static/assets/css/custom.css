@@ -314,6 +314,123 @@ transform: translateX(-50%);
     
 }
 
+.alertError{
+    position: absolute;
+
+    width: 90%;
+    height: 300px;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    -webkit-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+   
+    z-index: 2;
+    
+}
+
+.alertErrorTextLogin{
+    color: red;
+    font-size: 20px;
+    top: 50%;
+    
+    transform: translateY(-50%);
+    display: block;
+    position: relative;
+    
+}
+
+#loginAlertErrorBtn{
+   top: 60%;
+   left: 50%;
+    transform: translateX(-50%);
+    
+    display: block;
+    position: relative;
+}
+
+.separatorCart{
+    border: #657278;
+    width: 100%;
+
+}
+
+.tableCart{
+    
+    border-collapse: separate;
+  border-spacing: 30px 12px;
+  position: relative;
+  
+  width: 100%;
+  padding-top: 10px;
+    
+}
+
+.trCart{
+    border-bottom: 2px solid #32325D;
+    /* background-color: #32325D; */
+    
+}
+
+.cartTotal{
+    font-size: 30px;
+    font-weight: 600;
+    position: relative;
+    display: block;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    margin-bottom: 0px;
+    margin-top: 12px;
+}
+
+.paymentContainer{
+    width: 924px;
+    height: auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5rem;
+    border-radius: 10px;
+    background-color: white;
+    -webkit-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 1px 16px -8px rgba(0, 0, 0, 0.75);
+    overflow: auto;
+    padding-bottom: 4rem;
+}
+
+.paymentSection{
+    position: relative;
+    display: block;
+    width: 420px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 16px;
+    text-align: center;
+    
+}
+
+.creditoInput{
+    border: 1px solid #A9ECD0;
+    
+}
+
+.centerRelative{
+    
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.centerRelativeProfileList{
+    
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 
 @media (max-width: 1024px){
@@ -598,5 +715,7 @@ transform: translateX(-50%);
        margin-bottom: 0px;
         
     }
+
+    
 
 }

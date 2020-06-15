@@ -1,6 +1,3 @@
-// var server = "https://uaqeats.herokuapp.com"
-var server = "127.0.0.1:8000"
-
 // Funcion para obtener la Cookie y mandarla al Back
 function getCookie(name) {
     var cookieValue = null;
@@ -16,6 +13,7 @@ function getCookie(name) {
     }
     return cookieValue;
 }
+
 
 
 initCarrito = () => {
@@ -34,11 +32,15 @@ initCarrito = () => {
         return;
     }
 
-
+    let paymentSection = document.getElementById('paymentSec');
     let table = document.createElement("table");
+    table.classList.add('tableCart');
+    
     let tr1 = document.createElement("tr");
+    tr1.classList.add('trCart');
 
     let th1 = document.createElement("th");
+    th1.classList.add();
     th1.appendChild(document.createTextNode("Nombre"));
     let th2 = document.createElement("th");
     th2.appendChild(document.createTextNode("Precio c/u"));
@@ -55,6 +57,7 @@ initCarrito = () => {
     tr1.appendChild(th5);
 
     table.appendChild(tr1);
+    
 
     let keys = Object.keys(pedidos);
     let total = 0;
@@ -79,8 +82,10 @@ initCarrito = () => {
 
         let td5 = document.createElement("td");
         let btnDelete = document.createElement("button");
+       
+        
         btnDelete.textContent = 'Eliminar';
-        btnDelete.setAttribute('class', 'alguna-clase');
+        btnDelete.setAttribute('class', 'btn btn-sm btn-danger');
         btnDelete.setAttribute('data-id', pedidos[key]['id']);
         btnDelete.setAttribute('onclick', 'eliminarProducto(this)');
         td5.appendChild(btnDelete);
@@ -94,11 +99,15 @@ initCarrito = () => {
     }
 
     divPedidos.appendChild(table);
+    
 
     let divTotal = document.createElement('p');
     divTotal.setAttribute('id', 'totalProductos');
+    divTotal.setAttribute('class', 'cartTotal');
     divTotal.appendChild(document.createTextNode("Total: $" + total.toFixed(2)));
     divPedidos.appendChild(divTotal);
+
+    divPedidos.appendChild(paymentSection);
 }
 
 eliminarProducto = (elementoHTML) =>{

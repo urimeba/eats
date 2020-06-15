@@ -1,15 +1,95 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalizar compra</title>
     <script src="{% static 'js/funcionesUriel.js' %}"></script>
+    <title>Carrito</title>
+
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Nucleo Icons -->
+    <link href="{% static '/assets/css/nucleo-icons.css' %}" rel="stylesheet" />
+    <link href="{% static '/assets/css/nucleo-svg.css' %}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <link href=" {% static '/assets/css/font-awesome.css' %}  " rel="stylesheet" />
+    <link href=" {% static '/assets/css/nucleo-svg.css' %}  " rel="stylesheet" />
+    <!-- CSS Files -->
+    <link href="{% static '/assets/css/argon-design-system.css' %}  " rel="stylesheet" />
+    <link href="{% static '/assets/css/custom.css' %}  " rel="stylesheet" />
+    <script src="{% static 'js/funcionesUriel.js' %}"> </script>
+
+
 </head>
+
 <body>
+    <nav id="navbar-main" style="position: fixed;"
+        class="navbar navbar-main navbar-expand-lg navbar-dark bg-primary headroom">
+        <div class="container">
+            <a class="navbar-brand mr-lg-5" href="{% url 'store' %}">
+                <img src="{% static 'assets/img/icons/uaq.png' %}">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="navbar_global">
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                            <a href="{% url 'store' %}">
+                                <img src="{% static 'assets/img/icons/uaq.png' %}">
+                            </a>
+                        </div>
+                        <div class="col-6 collapse-close">
+                            <button type="button" class="navbar-toggler" data-toggle="collapse"
+                                data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <ul style="line-height:3rem; " class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
+                    <li class="nav-item dropdown pr-4">
+
+                        <i class="ni ni-cart d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'carrito' %}">Carrito</a>
+
+                    </li>
+                    <li class="nav-item dropdown pr-4 ">
+
+                        <i class="ni ni-collection d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'pedidos_cliente' %}">Mis pedidos</a>
+
+                    </li>
+                    <li class="nav-item dropdown pr-4  ">
+
+                        <i class="ni ni-circle-08 d-lg-none"></i>
+                        <a class="text-black nav-link-inner--text menuLink" href="{% url 'profile' %}">Mi perfil</a>
+
+                    </li>
+                    <li class="nav-item dropdown  ">
+
+                        <i class="ni ni-button-power d-lg-none"></i>
+                        <a class="nav-link-inner--text menuLink" href="{% url 'logout' %}">Cerrar sesion</a>
+
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class=" bgImgStore"></div>
+
     <script>
-        window.onload=function(){
+        window.onload = function () {
             initCarrito();
 
             let pedidos = JSON.parse(localStorage.getItem("pedidos"));
@@ -24,36 +104,45 @@
 
             let iptEfectivo = document.getElementById('iptEfectivo');
             let creditos = "{{request.user.creditos}}"
-            iptEfectivo.value=total-creditos;
+            iptEfectivo.value = total - creditos;
         }
     </script>
 
-    Pago
+    <h1>Pago</h1>
 
-    <p id="pedidos">
-    </p>
+    <div class="paymentContainer" id="pedidos">
 
-    <p>Metodos de pago</p>
-    <div>
-        <input type="checkbox" id="cbox1" value="efectivo"> 
-        <label for="cbox1">Efectivo: 
-            <input id="iptEfectivo" type="number" value="0" disabled> 
-        </label> 
     </div>
 
-    <div>
-        <input type="checkbox" id="cbox2" value="credito"> 
-        <label for="cbox2">Creditos: 
-            <input onchange="calcularEfectivo(this)" id="iptCreditos" type="number" value="{{request.user.creditos}}" min="0" max="{{request.user.creditos}}" onkeydown="return false"> 
-        </label>
+    <div id="paymentSec" class="paymentSection">
+        <h3 class="paymentSecTitle">Metodos de pago</h3>
+        <div class="d-flex flex-wrap">
+            <div class="mr-3">
+                <input type="checkbox" id="cbox1" value="efectivo">
+                <label for="cbox1">Efectivo:
+                    <input class="creditoInput" id="iptEfectivo" type="number" value="0" disabled>
+                </label>
+            </div>
+    
+            <div class="ml-3">
+                <input  type="checkbox" id="cbox2" value="credito">
+                <label for="cbox2">Creditos:
+                    <input class="creditoInput" onchange="calcularEfectivo(this)" id="iptCreditos" type="number"
+                        value="{{request.user.creditos}}" min="0" max="{{request.user.creditos}}" onkeydown="return false">
+                </label>
+            </div>
+        </div>
+        
+
+        <button class="btn btn-md btn-success mt-1" id="terminarCompra" onclick="pagar()">
+            Pagar
+        </button>
     </div>
 
-    <button id="terminarCompra" onclick="pagar()">
-        Pagar
-    </button>
-    
 
-    
+
+
 
 </body>
+
 </html>
