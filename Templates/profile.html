@@ -128,14 +128,8 @@
                                 </div>
                             </div>
                         </li>
-                                                <li>
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <span class="pl-1 text-sm text-blue pt-3"><b>Requisitos:</b> </span>{{nivel.nivel.descripcion}}
-                                </div>
-                            </div>
-                        </li>
-                                                <li>
+                        
+                        <li>
                             <div class="d-flex align-items-center">
                                 <div>
                                     <span class="pl-1 text-sm text-blue pt-3"><b>No. de pedidos actuales:</b> </span> {{numero_pedidos}}
@@ -145,7 +139,15 @@
                                                 <li>
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <span class="pl-1 text-sm text-blue pt-3"><b>No. de pedidos necesarios:</b> </span> {{nivel.nivel.noComidas|add:nivel.nivel.noProductos}}
+                                    <span class="pl-1 text-sm text-blue pt-3"><b>Requisitos para el siguiente nivel:</b> </span>{{nivel.nivel.descripcion}}
+                                </div>
+                            </div>
+                        </li>
+                                                
+                                                <li>
+                            <div class="d-flex align-items-center">
+                                <div>
+                                    <span class="pl-1 text-sm text-blue pt-3"><b>Beneficios del siguiente nivel:</b> </span> {{nivel.nivel.beneficios}}
                                 </div>
                             </div>
                         </li>
