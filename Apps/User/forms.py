@@ -102,28 +102,28 @@ class SignupForm(UserCreationForm):
 
     codigo = random_string()
 
-    def clean_username(self):
-        data = self.cleaned_data['username']
-        try:
-            # Twilio data
-            print("-HEEEEEEEEEEEEY")
-            print(os.environ['TWILIO_ACCOUNT_SID'])
-            account_sid = os.environ['TWILIO_ACCOUNT_SID']
-            auth_token = os.environ['TWILIO_AUTH_TOKEN']
-            client = Client(account_sid, auth_token)
+    # def clean_username(self):
+    #     data = self.cleaned_data['username']
+    #     try:
+    #         # Twilio data
+    #         print("-HEEEEEEEEEEEEY")
+    #         print(os.environ['TWILIO_ACCOUNT_SID'])
+    #         account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    #         auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    #         client = Client(account_sid, auth_token)
             
 
-            # Sending SMS to user, so he can activate his account
-            message = client.messages.create(
-                body="Tu codigo de Eats es: {0}".format(self.codigo),
-                from_='+12407861324',
-                to='+52'+data
-                )
+    #         # Sending SMS to user, so he can activate his account
+    #         message = client.messages.create(
+    #             body="Tu codigo de Eats es: {0}".format(self.codigo),
+    #             from_='+12407861324',
+    #             to='+52'+data
+    #             )
 
-            return data
-        except Exception as error:
-            print(error)
-            raise forms.ValidationError('Ingresa un teléfono válido')
+    #         return data
+    #     except Exception as error:
+    #         print(error)
+    #         raise forms.ValidationError('Ingresa un teléfono válido')
 
     def save(self, commit=True):
         user = super(SignupForm, self).save(commit=False)
