@@ -9,7 +9,7 @@ idna==2.9
 mysqlclient==1.4.6
 Pillow==7.1.2
 psycopg2==2.8.5
-PyJWT==1.7.1
+PyJWT==2.4.0
 pytz==2020.1
 requests==2.23.0
 six==1.15.0
